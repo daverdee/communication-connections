@@ -1,315 +1,319 @@
 
-import { Link } from "react-router-dom";
-import { CheckCircle, FileCheck, Percent, TrendingUp, Heart, Building, AlertCircle, DollarSign } from "lucide-react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const benefits = [
-  {
-    title: "Government Compliance",
-    description: "Meet Ministry of Health mandates for restorative care in LTC settings and avoid penalties during audits.",
-    icon: FileCheck,
-    color: "blue"
-  },
-  {
-    title: "Resident Health",
-    description: "Significantly improve mobility, fall prevention, and independence for residents.",
-    icon: Heart,
-    color: "red"
-  },
-  {
-    title: "Staff Performance",
-    description: "Enhanced staff skills, confidence, and job satisfaction through professional development.",
-    icon: TrendingUp,
-    color: "green"
-  },
-  {
-    title: "Cost Savings",
-    description: "Reduce hospitalizations, lower staff turnover, and optimize resource utilization.",
-    icon: DollarSign,
-    color: "purple"
-  },
-];
+import { CheckCircle, ChevronRight } from "lucide-react";
+import TestimonialCard from "@/components/TestimonialCard";
 
 const Compliance = () => {
+  const [activeTab, setActiveTab] = useState<"compliance" | "benefits">("compliance");
+
+  const compliancePoints = [
+    {
+      title: "Ministry of Health Mandated Requirements",
+      description: "Long-term care homes must provide a certain percentage of restorative care as required by Ontario's Ministry of Health and Long-Term Care. Our training ensures your facility meets these regulatory standards."
+    },
+    {
+      title: "MDS/RAI Documentation Compliance",
+      description: "Our training aligns with Minimum Data Set (MDS) and Resident Assessment Instrument (RAI) documentation requirements, ensuring your staff can properly record and track restorative care interventions."
+    },
+    {
+      title: "Certified Staff Database",
+      description: "All certified professionals are added to the Restorative Professionals Alliance of Ontario (RPAO) database, which can be accessed by employers and presented during Ministry audits to verify compliance."
+    },
+    {
+      title: "Audit Preparation & Defense",
+      description: "Having properly trained and certified restorative care staff provides documentation and evidence of compliance during Ministry inspections and audits."
+    }
+  ];
+
+  const benefitPoints = [
+    {
+      title: "Reduced Falls & Hospitalizations",
+      description: "Effective restorative therapy programs have been shown to reduce resident falls by up to 30% and decrease related hospitalizations, saving facilities time and resources."
+    },
+    {
+      title: "Enhanced Mobility & Independence",
+      description: "Residents receiving proper restorative care show measurable improvements in strength, mobility, and ability to perform activities of daily living (ADLs)."
+    },
+    {
+      title: "Improved Quality of Life Metrics",
+      description: "Facilities implementing our training programs report higher resident satisfaction scores and improved quality of life metrics on standardized assessments."
+    },
+    {
+      title: "Staff Skill Development & Retention",
+      description: "Healthcare professionals who receive specialized certification report higher job satisfaction and are more likely to remain with their employer, reducing turnover costs."
+    },
+    {
+      title: "Cost-Effective Implementation",
+      description: "Our flexible training options allow facilities to train groups on-site while sending select staff for advanced certification, maximizing your training budget."
+    }
+  ];
+
+  const testimonials = [
+    {
+      quote: "Communication Connections' training program has been instrumental in helping our facility meet and exceed Ministry compliance standards. Our staff feel more confident and our residents have shown remarkable improvements.",
+      author: "Sarah Johnson",
+      position: "Director of Care",
+      organization: "Sunshine Manor LTC",
+      rating: 5,
+      delay: "0s"
+    },
+    {
+      quote: "The restorative therapy certification has transformed how our team approaches resident care. We've documented a 25% reduction in falls since implementing the program.",
+      author: "Michael Chen",
+      position: "Administrator",
+      organization: "Golden Years Retirement Home",
+      rating: 5,
+      delay: "0.3s"
+    },
+    {
+      quote: "Not only did this training help us pass our Ministry audit with flying colors, but the resident outcomes have been incredible. Highly recommend for any LTC facility.",
+      author: "Patricia Thompson",
+      position: "Executive Director",
+      organization: "Oakwood Senior Living",
+      rating: 5,
+      delay: "0.6s"
+    }
+  ];
+
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-white to-gray-50">
-          <div className="container mx-auto px-4 text-center">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-5xl font-bold text-brand-900 leading-tight animate-fade-in">
+        <section className="bg-brand-50 py-12 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-900 mb-4">
                 Compliance & Benefits
               </h1>
-              
-              <p className="mt-6 text-xl text-gray-600 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                Understand the regulatory requirements for restorative care and the significant benefits our training brings to your facility.
+              <p className="text-lg text-gray-700 mb-8">
+                Our training programs ensure your facility meets Ministry standards while delivering measurable improvements in resident care
               </p>
+              <div className="inline-flex rounded-md shadow-sm" role="group">
+                <button
+                  type="button"
+                  className={`px-6 py-3 text-sm font-medium rounded-l-lg ${
+                    activeTab === "compliance" 
+                      ? "bg-brand-600 text-white" 
+                      : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
+                  onClick={() => setActiveTab("compliance")}
+                >
+                  Government Compliance
+                </button>
+                <button
+                  type="button"
+                  className={`px-6 py-3 text-sm font-medium rounded-r-lg ${
+                    activeTab === "benefits" 
+                      ? "bg-brand-600 text-white" 
+                      : "bg-white text-gray-700 hover:bg-gray-100"
+                  }`}
+                  onClick={() => setActiveTab("benefits")}
+                >
+                  Resident & Facility Benefits
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Compliance Section */}
-        <section className="py-16 md:py-24 bg-white">
+        {/* Main Content Section */}
+        <section className="py-12 md:py-16">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {activeTab === "compliance" ? (
               <div className="animate-fade-in">
-                <h2 className="text-3xl md:text-4xl font-bold text-brand-900 mb-6">
-                  Government Compliance & Ministry Standards
-                </h2>
-                
-                <div className="p-6 border border-amber-200 bg-amber-50 rounded-lg mb-8">
-                  <div className="flex items-start">
-                    <AlertCircle className="h-6 w-6 text-amber-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-amber-800 mb-1">Important Compliance Information</h3>
-                      <p className="text-gray-700">
-                        Long-term care homes in Ontario must provide a mandated percentage of restorative care as required by the Ministry of Health and Long-Term Care.
+                <div className="max-w-3xl mx-auto mb-12">
+                  <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-4">
+                    Meeting Government & Ministry Standards
+                  </h2>
+                  <p className="text-gray-700">
+                    Ontario's long-term care facilities are required to maintain specific standards for restorative care. Our training programs ensure your staff have the knowledge and certification needed to meet and exceed these requirements.
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8 mb-16">
+                  {compliancePoints.map((point, index) => (
+                    <div 
+                      key={index} 
+                      className="bg-white p-6 rounded-lg shadow-md border border-gray-100"
+                    >
+                      <div className="flex items-start mb-3">
+                        <CheckCircle className="text-brand-600 w-6 h-6 mt-1 mr-3 flex-shrink-0" />
+                        <h3 className="text-xl font-semibold text-brand-900">
+                          {point.title}
+                        </h3>
+                      </div>
+                      <p className="text-gray-700 ml-9">
+                        {point.description}
                       </p>
-                    </div>
-                  </div>
-                </div>
-                
-                <p className="text-lg text-gray-600 mb-6">
-                  Our training programs ensure your facility meets all regulatory requirements through:
-                </p>
-                
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Developing staff expertise in delivering Ministry-approved restorative care techniques</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Ensuring proper documentation that aligns with MDS/RAI requirements</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Adding certified professionals to the RPAO database, accessible during Ministry audits</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700">Preventing penalties and compliance issues during regulatory inspections</span>
-                  </li>
-                </ul>
-                
-                <div className="flex items-center justify-start">
-                  <Link to="/contact" className="btn-primary">
-                    Ensure Your Compliance
-                  </Link>
-                </div>
-              </div>
-              
-              <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-                <div className="relative">
-                  <div className="aspect-square md:aspect-auto md:h-[500px] rounded-xl overflow-hidden shadow-xl">
-                    <img 
-                      src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80" 
-                      alt="Regulatory compliance" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-lg bg-brand-100 -z-10"></div>
-                  <div className="absolute -top-6 -left-6 w-32 h-32 rounded-lg bg-brand-50 -z-10"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Benefits Grid */}
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="section-title">
-                Key Benefits of Our Training
-              </h2>
-              <p className="section-subtitle">
-                Our comprehensive training programs deliver multiple advantages for both residents and your facility.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {benefits.map((benefit, index) => (
-                <div 
-                  key={benefit.title} 
-                  className="feature-card animate-fade-in"
-                  style={{ animationDelay: `${0.1 * index}s` }}
-                >
-                  <div className={`mb-4 w-12 h-12 rounded-full flex items-center justify-center ${
-                    benefit.color === "blue" ? "bg-brand-100 text-brand-600" :
-                    benefit.color === "red" ? "bg-red-100 text-red-600" :
-                    benefit.color === "green" ? "bg-green-100 text-green-600" :
-                    "bg-purple-100 text-purple-600"
-                  }`}>
-                    <benefit.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-900 mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Resident Outcomes */}
-        <section className="py-16 md:py-24 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <h2 className="section-title">
-                Improved Resident Outcomes
-              </h2>
-              <p className="section-subtitle">
-                Our training leads to measurable improvements in resident health and quality of life.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              {[
-                {
-                  stat: "40%",
-                  label: "Reduction in Falls",
-                  description: "Well-implemented restorative care programs can significantly reduce fall incidents."
-                },
-                {
-                  stat: "60%",
-                  label: "Increased Mobility",
-                  description: "Residents show improved mobility and independence with regular restorative therapy."
-                },
-                {
-                  stat: "30%",
-                  label: "Fewer Hospitalizations",
-                  description: "Fewer emergency transfers due to improved resident strength and function."
-                },
-              ].map((outcome, index) => (
-                <div 
-                  key={index} 
-                  className="feature-card text-center animate-fade-in"
-                  style={{ animationDelay: `${0.1 * index}s` }}
-                >
-                  <div className="mb-2">
-                    <span className="text-4xl font-bold text-brand-600">{outcome.stat}</span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-900 mb-3">{outcome.label}</h3>
-                  <p className="text-gray-600">{outcome.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Cost-Effective & Scalable */}
-        <section className="py-16 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8 md:p-12 animate-fade-in">
-              <h2 className="text-3xl font-bold text-brand-900 mb-6">
-                Cost-Effective & Scalable Training Solutions
-              </h2>
-              
-              <p className="text-lg text-gray-600 mb-8">
-                Our flexible training options allow you to optimize your training budget while maximizing staff development and compliance:
-              </p>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                <div className="p-6 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <Building className="h-10 w-10 text-brand-600 mb-4" />
-                  <h3 className="text-xl font-semibold text-brand-900 mb-2">
-                    On-Site Group Training
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Train multiple staff members at once in your facility, minimizing disruption to care schedules and maximizing training efficiency.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Customized to your facility's needs</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Lower per-person cost for larger groups</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">No travel time or costs for your staff</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="p-6 border rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <Users className="h-10 w-10 text-brand-600 mb-4" />
-                  <h3 className="text-xl font-semibold text-brand-900 mb-2">
-                    Advanced Toronto Training
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    Send selected staff for advanced certification at our Toronto facility, developing specialized internal expertise and leadership.
-                  </p>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">In-depth, focused learning environment</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Develop internal restorative care leaders</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">Networking with professionals from other facilities</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="p-6 border-t pt-8 mt-8">
-                <h3 className="text-xl font-semibold text-brand-900 mb-4">
-                  Return on Investment
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Investment in our training programs delivers measurable financial benefits through:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[
-                    "Reduced staff turnover and recruitment costs",
-                    "Fewer resident hospitalizations and emergency transfers",
-                    "Avoiding compliance penalties during Ministry audits"
-                  ].map((item, index) => (
-                    <div key={index} className="p-4 bg-gray-50 rounded-lg border">
-                      <Percent className="h-6 w-6 text-brand-600 mb-2" />
-                      <p className="text-gray-700">{item}</p>
                     </div>
                   ))}
                 </div>
+
+                <div className="bg-brand-50 rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
+                  <h3 className="text-xl font-semibold text-brand-900 mb-4">
+                    Certification & Compliance Timeline
+                  </h3>
+                  <ul className="space-y-4">
+                    <li className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-600 text-white">
+                          1
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium text-brand-900">Complete Training</h4>
+                        <p className="text-gray-600">Staff attend and successfully complete either Fundamental or Advanced certification training.</p>
+                      </div>
+                    </li>
+                    <li className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-600 text-white">
+                          2
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium text-brand-900">Receive Certification</h4>
+                        <p className="text-gray-600">Participants receive official certification valid for 2 years from completion date.</p>
+                      </div>
+                    </li>
+                    <li className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-600 text-white">
+                          3
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium text-brand-900">RPAO Database Registration</h4>
+                        <p className="text-gray-600">All certified professionals are added to the Restorative Professionals Alliance of Ontario database.</p>
+                      </div>
+                    </li>
+                    <li className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-8 h-8 rounded-full bg-brand-600 text-white">
+                          4
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium text-brand-900">Renewal Notification</h4>
+                        <p className="text-gray-600">Participants receive renewal notifications 3 months before certification expiry.</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="animate-fade-in">
+                <div className="max-w-3xl mx-auto mb-12">
+                  <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-4">
+                    Measurable Benefits for Residents & Facilities
+                  </h2>
+                  <p className="text-gray-700">
+                    Beyond meeting compliance requirements, our training programs deliver tangible outcomes that improve resident well-being and facility operations.
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-8 mb-16">
+                  {benefitPoints.map((point, index) => (
+                    <div 
+                      key={index} 
+                      className="bg-white p-6 rounded-lg shadow-md border border-gray-100"
+                    >
+                      <div className="flex items-start mb-3">
+                        <CheckCircle className="text-green-600 w-6 h-6 mt-1 mr-3 flex-shrink-0" />
+                        <h3 className="text-xl font-semibold text-brand-900">
+                          {point.title}
+                        </h3>
+                      </div>
+                      <p className="text-gray-700 ml-9">
+                        {point.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="bg-brand-50 rounded-lg p-6 md:p-8 max-w-3xl mx-auto">
+                  <h3 className="text-xl font-semibold text-brand-900 mb-4">
+                    Case Study: Measured Outcomes
+                  </h3>
+                  <p className="text-gray-700 mb-6">
+                    After implementing our restorative therapy training program, a group of 5 long-term care homes reported the following average improvements over 12 months:
+                  </p>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <span className="text-2xl font-bold text-brand-600">27%</span>
+                      <p className="text-sm text-gray-600">Reduction in Falls</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <span className="text-2xl font-bold text-brand-600">32%</span>
+                      <p className="text-sm text-gray-600">Improved Mobility</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <span className="text-2xl font-bold text-brand-600">19%</span>
+                      <p className="text-sm text-gray-600">Fewer Hospitalizations</p>
+                    </div>
+                    <div className="bg-white p-4 rounded-lg text-center">
+                      <span className="text-2xl font-bold text-brand-600">100%</span>
+                      <p className="text-sm text-gray-600">Ministry Compliance</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 md:py-24 bg-brand-600 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 animate-fade-in">
-              Ensure Compliance & Enhance Care Quality
+        {/* Testimonials Section */}
+        <section className="bg-gray-50 py-12 md:py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-3 text-center">
+              What Healthcare Leaders Are Saying
             </h2>
-            
-            <p className="text-xl opacity-90 max-w-3xl mx-auto mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              Contact us today to discuss how our training programs can help your facility meet regulatory requirements while improving resident outcomes.
+            <p className="text-gray-700 text-center max-w-2xl mx-auto mb-10">
+              Hear from administrators and directors who have implemented our training programs in their facilities
             </p>
             
-            <div className="inline-block animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <Link 
-                to="/contact" 
-                className="px-8 py-4 bg-white text-brand-700 rounded-md font-medium hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
+            <div className="grid md:grid-cols-3 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <TestimonialCard
+                  key={index}
+                  quote={testimonial.quote}
+                  author={testimonial.author}
+                  position={testimonial.position}
+                  organization={testimonial.organization}
+                  rating={testimonial.rating}
+                  delay={testimonial.delay}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* CTA Section */}
+        <section className="py-12 md:py-16">
+          <div className="container mx-auto px-4">
+            <div className="bg-brand-900 text-white rounded-lg p-8 md:p-12 text-center max-w-4xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Ready to Ensure Compliance & Improve Resident Outcomes?
+              </h2>
+              <p className="text-lg mb-8 opacity-90">
+                Contact us today to discuss customized training solutions for your facility
+              </p>
+              <a 
+                href="/contact" 
+                className="inline-flex items-center justify-center bg-white text-brand-900 font-medium py-3 px-8 rounded-md shadow-lg hover:bg-gray-100 transition-colors"
               >
-                Schedule a Consultation
-              </Link>
+                Get in Touch
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </a>
             </div>
           </div>
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
 };
 
