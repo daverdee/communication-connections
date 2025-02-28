@@ -4,6 +4,166 @@ import { Link } from "react-router-dom";
 import { CheckCircle, XCircle, ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Phone, User } from "lucide-react";
+
+const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
+  const { toast } = useToast();
+  const [open, setOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    interest: "organization", // Default value
+    comments: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleRadioChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      interest: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // In a real implementation, you would send this data to an email service
+    // For now, we'll simulate success with a delay
+    setTimeout(() => {
+      setLoading(false);
+      toast({
+        title: "Inquiry Sent!",
+        description: "We'll get back to you within 2 hours. Thank you for your interest!",
+      });
+      
+      // Reset form and close dialog
+      setFormData({
+        name: "",
+        phone: "",
+        interest: "organization",
+        comments: "",
+      });
+      setOpen(false);
+    }, 1500);
+
+    // In production, you would add code to send to david@communicationconnections.ca
+    console.log("Form submitted:", formData);
+  };
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        {trigger}
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[500px]">
+        <DialogHeader>
+          <DialogTitle>Send Us a Message</DialogTitle>
+          <DialogDescription>
+            Fill out the form below and we'll get back to you within 2 hours.
+          </DialogDescription>
+        </DialogHeader>
+        
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          <div>
+            <Label htmlFor="name">Full Name <span className="text-red-500">*</span></Label>
+            <div className="flex mt-1">
+              <User className="w-5 h-5 text-gray-400 mr-2 mt-3" />
+              <Input
+                id="name"
+                name="name"
+                placeholder="Your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          
+          <div>
+            <Label htmlFor="phone">Phone Number <span className="text-red-500">*</span></Label>
+            <div className="flex mt-1">
+              <Phone className="w-5 h-5 text-gray-400 mr-2 mt-3" />
+              <Input
+                id="phone"
+                name="phone"
+                placeholder="Your phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          
+          <div>
+            <Label>I am interested in training for: <span className="text-red-500">*</span></Label>
+            <RadioGroup 
+              className="mt-2"
+              value={formData.interest} 
+              onValueChange={handleRadioChange}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="organization" id="organization" />
+                <Label htmlFor="organization">My organization/facility</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="personal" id="personal" />
+                <Label htmlFor="personal">Myself personally</Label>
+              </div>
+            </RadioGroup>
+          </div>
+          
+          <div>
+            <Label htmlFor="comments">Additional Comments</Label>
+            <Textarea
+              id="comments"
+              name="comments"
+              placeholder="Tell us more about your training needs"
+              value={formData.comments}
+              onChange={handleChange}
+              className="mt-1"
+              rows={4}
+            />
+          </div>
+          
+          <Button 
+            type="submit" 
+            className="w-full" 
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </Button>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 const TrainingProgram = ({ 
   title, 
@@ -51,13 +211,23 @@ const TrainingProgram = ({
           </ul>
         </div>
         
-        <div className="bg-brand-50 p-4 rounded-md">
+        <div className="bg-brand-50 p-4 rounded-md mb-5">
           <div className="flex items-start">
             <div className="bg-brand-100 p-2 rounded-full mr-3">
               <div className="text-brand-600">💡</div>
             </div>
             <p className="text-brand-800 italic">{insight}</p>
           </div>
+        </div>
+        
+        <div className="text-center">
+          <ContactFormDialog 
+            trigger={
+              <Button variant="outline" className="w-full">
+                Inquire About Pricing
+              </Button>
+            }
+          />
         </div>
       </div>
     </div>
@@ -133,10 +303,11 @@ const Training = () => {
                 Specialized programs designed to enhance care quality, ensure compliance, and improve resident outcomes in long-term care settings.
               </p>
               
-              <div className="mt-8 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+              <div className="mt-8 flex flex-col items-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
                 <Link to="/contact" className="btn-primary">
-                  Contact Us to Find the Right Program for Your Team
+                  Contact Us
                 </Link>
+                <p className="mt-3 text-gray-600">to find the right program for your team</p>
               </div>
             </div>
           </div>
@@ -273,13 +444,16 @@ const Training = () => {
                 </div>
               </div>
               
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center px-8 py-4 bg-white text-brand-700 rounded-md font-medium hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
-              >
-                Contact Us Today
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              <ContactFormDialog 
+                trigger={
+                  <Button 
+                    className="inline-flex items-center px-8 py-4 bg-white text-brand-700 rounded-md font-medium hover:bg-gray-100 transition-colors shadow-md hover:shadow-lg"
+                  >
+                    Contact Us Today
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                }
+              />
             </div>
           </div>
         </section>
