@@ -172,8 +172,8 @@ const Home = () => {
                 <div className="relative">
                   <div className="aspect-video rounded-xl overflow-hidden shadow-xl">
                     <img 
-                      src="https://images.unsplash.com/photo-1574280363402-2f672940b871?auto=format&fit=crop&w=800&q=80" 
-                      alt="Elderly person receiving healthcare" 
+                      src="/lovable-uploads/b0af0dd6-9202-4916-927e-97917d434b3c.png" 
+                      alt="Caregiver with elderly patient" 
                       className="w-full h-full object-cover"
                     />
                   </div>
