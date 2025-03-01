@@ -41,7 +41,7 @@ const Navbar = () => {
     { name: "About Us", path: "/about" },
     { name: "Training Programs", path: "/training" },
     { name: "Compliance & Benefits", path: "/compliance" },
-    { name: "Contact", path: "/contact" },
+    { name: "Contact", path: "/#contact" },
   ];
 
   return (
@@ -67,7 +67,7 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact" className="btn-primary ml-4">
+            <Link to="/#contact" className="btn-primary ml-4">
               Get Started
             </Link>
           </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
             </Link>
           ))}
           <Link 
-            to="/contact" 
+            to="/#contact" 
             className="btn-primary text-center mt-6"
           >
             Get Started
