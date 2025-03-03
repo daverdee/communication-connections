@@ -45,8 +45,8 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
     
-    /* Custom background color - changed to white */
-    --custom-bg: 0 0% 100%;
+    /* Custom background color */
+    --custom-bg: 51 61% 92%;
   }
 
   .dark {
@@ -159,9 +159,9 @@
     @apply p-6 rounded-xl border bg-white shadow-sm hover:shadow-md transition-all duration-300;
   }
   
-  /* Custom background utility class - changed to white */
+  /* Custom background utility class */
   .bg-custom {
-    @apply bg-white;
+    @apply bg-[#F4F2DE];
   }
 }
 
