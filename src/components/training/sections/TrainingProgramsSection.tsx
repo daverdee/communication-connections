@@ -43,7 +43,7 @@ const TrainingProgramsSection: React.FC = () => {
     idealFor: "Long-term care homes looking to train multiple PSWs and healthcare providers at once.",
     learningPoints: [
       "Our team delivers training directly at your facility, reducing disruption and ensuring compliance.",
-      "Train large groups of staff quickly and efficiently to meet restorative care mandates.",
+      "Train large groups of staff quickly and efficiently to meet custom restorative care mandates.",
       "Designed to help LTC homes maintain proper staffing ratios for restorative care."
     ],
     insight: "Cost-effective, scalable training that ensures your entire team is trained without sending staff off-site."
