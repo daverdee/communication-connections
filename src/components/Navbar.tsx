@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import ContactFormDialog from "./training/ContactFormDialog";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -80,9 +82,13 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contact" className="btn-primary ml-4">
-              Get Started
-            </Link>
+            <ContactFormDialog 
+              trigger={
+                <Button className="btn-primary ml-4">
+                  Get Started
+                </Button>
+              }
+            />
           </div>
 
           {/* Mobile Menu Button */}
@@ -115,12 +121,15 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link 
-            to="/contact" 
-            className="btn-primary text-center mt-6"
-          >
-            Get Started
-          </Link>
+          <ContactFormDialog 
+            trigger={
+              <Button 
+                className="btn-primary text-center mt-6"
+              >
+                Get Started
+              </Button>
+            }
+          />
         </div>
       </div>
     </nav>
