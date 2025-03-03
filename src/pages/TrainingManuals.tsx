@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -21,7 +20,7 @@ const formSchema = z.object({
   city: z.string().min(2, { message: "City is required" }),
   province: z.string().min(2, { message: "Province is required" }),
   postalCode: z.string().min(6, { message: "Valid postal code is required" }),
-  manualSelection: z.enum(["manual1", "manual2", "manual3", "both", "all"], {
+  manualSelection: z.enum(["manual1", "manual2", "manual3", "all"], {
     required_error: "Please select which manual(s) you want",
   }),
   specialInstructions: z.string().optional(),
@@ -101,7 +100,6 @@ export default function TrainingManuals() {
     if (manualSelection === "manual1") subtotal = 89.99;
     else if (manualSelection === "manual2") subtotal = 59.99;
     else if (manualSelection === "manual3") subtotal = 39.99;
-    else if (manualSelection === "both") subtotal = 149.98; // 89.99 + 59.99
     else if (manualSelection === "all") subtotal = 189.97; // 89.99 + 59.99 + 39.99
     
     // Add shipping
@@ -218,15 +216,6 @@ export default function TrainingManuals() {
                 <div className="flex flex-wrap gap-4 mt-4">
                   <Button 
                     onClick={() => {
-                      setSelectedManual("both");
-                      setOrderStep("form");
-                    }}
-                    variant="outline"
-                  >
-                    Order Manual 1 & 2 (${149.98.toFixed(2)} + HST)
-                  </Button>
-                  <Button 
-                    onClick={() => {
                       setSelectedManual("all");
                       setOrderStep("form");
                     }}
@@ -290,16 +279,6 @@ export default function TrainingManuals() {
                       />
                       <Label htmlFor="manual3" className="flex-1">
                         PSW Restorative Therapy Basic Training - $39.99 CAD
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem 
-                        value="both" 
-                        id="both" 
-                        {...register("manualSelection")}
-                      />
-                      <Label htmlFor="both" className="flex-1">
-                        Manual 1 & 2 - $149.98 CAD
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -407,18 +386,6 @@ export default function TrainingManuals() {
                         <span>PSW Restorative Therapy Basic Training</span>
                         <span>$39.99</span>
                       </div>
-                    )}
-                    {manualSelection === "both" && (
-                      <>
-                        <div className="flex justify-between">
-                          <span>Programs & Documentation for Successful Implementation</span>
-                          <span>$89.99</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Recreation and Leisure in Long Term Care</span>
-                          <span>$59.99</span>
-                        </div>
-                      </>
                     )}
                     {manualSelection === "all" && (
                       <>
