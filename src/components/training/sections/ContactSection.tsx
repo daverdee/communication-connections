@@ -16,7 +16,7 @@ const ContactSection: React.FC = () => {
             Let's discuss which training solution is right for your facility.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 mb-10 max-w-3xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-10 max-w-3xl mx-auto">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-3">
                 <PhoneCall className="h-6 w-6" />
@@ -30,7 +30,7 @@ const ContactSection: React.FC = () => {
                 <Mail className="h-6 w-6" />
               </div>
               <p className="font-medium">Email Us</p>
-              <p className="text-white/90">david@communicationconnections.ca</p>
+              <p className="text-white/90 break-all">david@communicationconnections.ca</p>
             </div>
             
             <div className="flex flex-col items-center">
@@ -38,7 +38,7 @@ const ContactSection: React.FC = () => {
                 <MapPin className="h-6 w-6" />
               </div>
               <p className="font-medium">Visit Us</p>
-              <p className="text-white/90">3850 Finch Avenue East, Suite 306<br />Scarborough, Ontario</p>
+              <p className="text-white/90">3850 Finch Avenue East<br />Scarborough, Ontario</p>
             </div>
           </div>
           
