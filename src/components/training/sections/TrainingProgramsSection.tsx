@@ -1,3 +1,4 @@
+
 import React from "react";
 import TrainingProgram from "../TrainingProgram";
 
@@ -21,7 +22,7 @@ const TrainingProgramsSection: React.FC = () => {
         "Assessment and documentation techniques not covered in the fundamental course.",
         "Advanced program design for mobility, exercise, and restorative dining programs.",
         "Comprehensive documentation & compliance strategies for Ministry audits.",
-        "Specialized training in dementia care, communication strategies, and fall prevention leadership."
+        "Specialized training in responsive behavioural intervention, communication strategies, and fall prevention programs."
       ],
       insight: "This certification is for professionals who would like a greater understanding of how to implement restorative therapy in a professional setting."
     },
