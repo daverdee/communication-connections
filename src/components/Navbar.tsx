@@ -48,7 +48,7 @@ const Navbar = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+        scrolled ? "bg-gray-100 shadow-md py-2" : "bg-gray-200 py-4"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6">
@@ -87,7 +87,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-white z-40 pt-20 md:hidden transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-gray-100 z-40 pt-20 md:hidden transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
