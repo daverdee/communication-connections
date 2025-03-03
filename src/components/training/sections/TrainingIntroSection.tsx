@@ -24,9 +24,6 @@ const TrainingIntroSection: React.FC = () => {
                     <p className="font-medium text-gray-800">
                       All programs are designed for trained healthcare professionals only
                     </p>
-                    <p className="text-gray-600 text-sm">
-                      (PSWs, RNs, RPNs, PTs, OTs, etc.)
-                    </p>
                   </div>
                 </div>
               </div>
@@ -35,7 +32,7 @@ const TrainingIntroSection: React.FC = () => {
                   <XCircle className="h-6 w-6 text-red-600 mr-3 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-800">
-                      Administrators, volunteers, and non-clinical staff are NOT eligible for certification
+                      Non-clinical staff are NOT eligible for certification
                     </p>
                   </div>
                 </div>
