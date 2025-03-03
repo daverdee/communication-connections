@@ -5,7 +5,7 @@ import TrainingProgram from "../TrainingProgram";
 const TrainingProgramsSection: React.FC = () => {
   const programs = [
     {
-      title: "Fundamental Restorative Therapy Training",
+      title: "Fundamental Restorative Therapy Training (1 Day Course)",
       idealFor: "PSWs, healthcare aides, and other frontline care providers.",
       learningPoints: [
         "Core restorative therapy techniques to enhance strength, mobility, and independence.",
@@ -16,7 +16,7 @@ const TrainingProgramsSection: React.FC = () => {
       insight: "This program ensures that your staff is equipped to deliver restorative care in compliance with industry regulations."
     },
     {
-      title: "Advanced Restorative Lead Certification",
+      title: "Advanced Restorative Lead Certification (2 Day Course)",
       idealFor: "Senior care professionals looking to lead restorative care programs in their workplace.",
       learningPoints: [
         "Advanced program design for mobility, exercise, and restorative dining programs.",
@@ -27,6 +27,16 @@ const TrainingProgramsSection: React.FC = () => {
       insight: "This certification is for professionals who will take on an enhanced leadership role in restorative therapy at their facility."
     },
     {
+      title: "In-Person Certification at Our Toronto Training Facility (3 Day Course)",
+      idealFor: "LTC homes sending select staff for leadership-level restorative training.",
+      learningPoints: [
+        "Staff members attend an in-depth training session at our Toronto facility.",
+        "Smaller, intensive learning environment for professionals taking on leadership roles.",
+        "Certification ensures staff is qualified to oversee restorative programs and mentor other team members."
+      ],
+      insight: "A great option for LTC homes that need a few key staff to take on leadership responsibilities in restorative care."
+    },
+    {
       title: "On-Site Large Group Training",
       idealFor: "Long-term care homes looking to train multiple PSWs and healthcare providers at once.",
       learningPoints: [
@@ -35,16 +45,6 @@ const TrainingProgramsSection: React.FC = () => {
         "Designed to help LTC homes maintain proper staffing ratios for restorative care."
       ],
       insight: "Cost-effective, scalable training that ensures your entire team is trained without sending staff off-site."
-    },
-    {
-      title: "In-Person Certification at Our Toronto Training Facility",
-      idealFor: "LTC homes sending select staff for leadership-level restorative training.",
-      learningPoints: [
-        "Staff members attend an in-depth training session at our Toronto facility.",
-        "Smaller, intensive learning environment for professionals taking on leadership roles.",
-        "Certification ensures staff is qualified to oversee restorative programs and mentor other team members."
-      ],
-      insight: "A great option for LTC homes that need a few key staff to take on leadership responsibilities in restorative care."
     }
   ];
 
