@@ -16,6 +16,7 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
     name: "",
     phone: "",
     interest: "organization",
+    hasHealthcareBackground: "yes",
     comments: "",
   });
   const [loading, setLoading] = useState(false);
@@ -35,6 +36,13 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
     }));
   };
 
+  const handleHealthcareBackgroundChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      hasHealthcareBackground: value,
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -50,6 +58,7 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
         name: "",
         phone: "",
         interest: "organization",
+        hasHealthcareBackground: "yes",
         comments: "",
       });
       setOpen(false);
@@ -116,6 +125,24 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="personal" id="personal" />
                 <Label htmlFor="personal">Myself personally</Label>
+              </div>
+            </RadioGroup>
+          </div>
+          
+          <div>
+            <Label>Do you have a healthcare background? <span className="text-red-500">*</span></Label>
+            <RadioGroup 
+              className="mt-2"
+              value={formData.hasHealthcareBackground} 
+              onValueChange={handleHealthcareBackgroundChange}
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="yes" id="healthcare-yes" />
+                <Label htmlFor="healthcare-yes">Yes</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="no" id="healthcare-no" />
+                <Label htmlFor="healthcare-no">No</Label>
               </div>
             </RadioGroup>
           </div>
