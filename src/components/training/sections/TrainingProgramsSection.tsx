@@ -1,4 +1,3 @@
-
 import React from "react";
 import TrainingProgram from "../TrainingProgram";
 
@@ -30,7 +29,6 @@ const TrainingProgramsSection: React.FC = () => {
       title: "Restorative Therapy Training and Principles for Successful Implementation (3 Day Course)",
       idealFor: "All healthcare professionals looking to implement restorative care strategy and/or looking to pursue a leadership role.",
       learningPoints: [
-        "Staff members attend an in-depth training session at our Toronto facility.",
         "Strategic leadership & planning to support a facility-wide restorative care approach.",
         "Smaller, intensive learning environment for professionals taking on leadership roles.",
         "Certification ensures staff is qualified to oversee restorative programs and mentor other team members."
