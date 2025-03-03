@@ -17,7 +17,7 @@ const TrainingProgramsSection: React.FC = () => {
     },
     {
       title: "Comprehensive Restorative Training (2 Day Course)",
-      idealFor: "Senior care professionals looking to lead restorative care programs in their workplace.",
+      idealFor: "Any and all healthcare staff that are involved with restorative care therapy.",
       learningPoints: [
         "Assessment and documentation techniques not covered in the fundamental course.",
         "Advanced program design for mobility, exercise, and restorative dining programs.",
@@ -28,7 +28,7 @@ const TrainingProgramsSection: React.FC = () => {
     },
     {
       title: "Restorative Therapy Training and Principles for Successful Implementation (3 Day Course)",
-      idealFor: "LTC homes sending select staff for leadership-level restorative training.",
+      idealFor: "All healthcare professionals looking to implement restorative care strategy and/or looking to pursue a leadership role.",
       learningPoints: [
         "Staff members attend an in-depth training session at our Toronto facility.",
         "Strategic leadership & planning to support a facility-wide restorative care approach.",
