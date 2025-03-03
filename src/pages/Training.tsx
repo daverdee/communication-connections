@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle, XCircle, ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
@@ -289,9 +290,9 @@ const Training = () => {
   return (
     <>
       <Navbar />
-      <main className="bg-[#F4F2DE]">
+      <main className="bg-white">
         {/* Hero Section */}
-        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-[#F4F2DE] to-[#F4F2DE]/90">
+        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-white/90">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-900 leading-tight animate-fade-in">
@@ -313,7 +314,7 @@ const Training = () => {
         </section>
 
         {/* Introduction Section */}
-        <section className="py-16 bg-[#F4F2DE]">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-6 text-center">
@@ -360,7 +361,7 @@ const Training = () => {
         </section>
 
         {/* Training Programs Section */}
-        <section className="py-16 bg-[#F4F2DE]">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-4 text-center">
               Our Training Program Options
@@ -384,7 +385,7 @@ const Training = () => {
         </section>
 
         {/* Why Choose Section */}
-        <section className="py-16 bg-[#F4F2DE]">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-8 text-center">
