@@ -27,9 +27,10 @@ const Navbar = () => {
     };
   }, []);
 
-  // Close menu when route changes
+  // Close menu and scroll to top when route changes
   useEffect(() => {
     setIsMenuOpen(false);
+    window.scrollTo(0, 0);
   }, [location]);
 
   const isActive = (path: string) => {
