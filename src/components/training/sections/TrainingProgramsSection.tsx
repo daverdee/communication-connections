@@ -19,8 +19,8 @@ const TrainingProgramsSection: React.FC = () => {
       title: "Comprehensive Restorative Training (2 Day Course)",
       idealFor: "Senior care professionals looking to lead restorative care programs in their workplace.",
       learningPoints: [
-        "Advanced program design for mobility, exercise, and restorative dining programs.",
         "Assessment and documentation techniques not covered in the fundamental course.",
+        "Advanced program design for mobility, exercise, and restorative dining programs.",
         "Comprehensive documentation & compliance strategies for Ministry audits.",
         "Specialized training in dementia care, communication strategies, and fall prevention leadership."
       ],
