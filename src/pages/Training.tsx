@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle, XCircle, ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
@@ -290,9 +289,9 @@ const Training = () => {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="bg-[#F4F2DE]">
         {/* Hero Section */}
-        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-gray-50">
+        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-[#F4F2DE] to-[#F4F2DE]/90">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-900 leading-tight animate-fade-in">
@@ -314,7 +313,7 @@ const Training = () => {
         </section>
 
         {/* Introduction Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[#F4F2DE]">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-6 text-center">
@@ -325,7 +324,7 @@ const Training = () => {
                 Restorative therapy is a government-mandated component of care in long-term care homes. Our comprehensive training programs are designed to ensure your facility meets all regulatory requirements while enhancing the quality of care you provide.
               </p>
               
-              <div className="bg-gray-50 p-6 rounded-lg shadow-sm border border-gray-100 mb-8">
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 mb-8">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
                     <div className="flex items-start mb-4">
@@ -361,7 +360,7 @@ const Training = () => {
         </section>
 
         {/* Training Programs Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-[#F4F2DE]">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-4 text-center">
               Our Training Program Options
@@ -385,7 +384,7 @@ const Training = () => {
         </section>
 
         {/* Why Choose Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-[#F4F2DE]">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-8 text-center">
@@ -396,7 +395,7 @@ const Training = () => {
                 {whyChooseReasons.map((reason, index) => (
                   <div 
                     key={index}
-                    className="flex items-start p-5 bg-gray-50 rounded-lg border border-gray-100"
+                    className="flex items-start p-5 bg-white rounded-lg border border-gray-100"
                   >
                     <CheckCircle className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
                     <p className="text-gray-700">{reason}</p>
