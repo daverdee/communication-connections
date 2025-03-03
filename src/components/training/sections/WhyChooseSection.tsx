@@ -5,7 +5,7 @@ import { CheckCircle } from "lucide-react";
 const WhyChooseSection: React.FC = () => {
   const whyChooseReasons = [
     "Government Compliance & Audit Readiness – Ensures your facility meets Ministry of Long-Term Care mandates.",
-    "Proven Training Methods – Backed by 12+ years of experience and partnerships with hundreds of LTC homes across Ontario.",
+    "Proven Training Methods – Backed by 12+ years of experience and partnerships LTC and Retirement homes across Ontario.",
     "Exclusive Training Materials – We own proprietary restorative therapy manuals aligned with regulatory requirements.",
     "Certified Professionals are Added to the RPAO Database – Recognized by employers and regulatory bodies."
   ];
