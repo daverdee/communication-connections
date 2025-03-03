@@ -1,3 +1,4 @@
+
 import React from "react";
 import TrainingProgram from "../TrainingProgram";
 
@@ -58,7 +59,7 @@ const TrainingProgramsSection: React.FC = () => {
           Choose from our range of specialized programs tailored for different roles and facility needs
         </p>
         <p className="text-gray-700 text-center max-w-3xl mx-auto mb-12 font-medium">
-          All three programs include a certificate that is submitted to the Restorative Programs Association of Ontario (RPAO).
+          All three programs include a certificate that is submitted to the Restorative Programs Association of Ontario (RPAO). Certificates are valid for two years.
         </p>
         
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
