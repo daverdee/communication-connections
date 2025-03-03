@@ -72,7 +72,10 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className={isActive(link.path) ? "active-nav-link" : "nav-link"}
+                className={isActive(link.path) 
+                  ? "text-brand-600 font-bold after:content-[''] after:block after:w-full after:h-0.5 after:bg-brand-400"
+                  : "nav-link"
+                }
               >
                 {link.name}
               </Link>
@@ -104,9 +107,10 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`text-xl ${
-                isActive(link.path) ? "font-semibold text-brand-600" : "text-brand-700"
-              }`}
+              className={isActive(link.path) 
+                ? "text-xl font-bold text-brand-600 border-l-4 border-brand-600 pl-4" 
+                : "text-xl text-brand-700 pl-4"
+              }
             >
               {link.name}
             </Link>
