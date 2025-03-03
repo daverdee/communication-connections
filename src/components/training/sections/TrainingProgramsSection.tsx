@@ -1,3 +1,4 @@
+
 import React from "react";
 import TrainingProgram from "../TrainingProgram";
 
@@ -38,7 +39,7 @@ const TrainingProgramsSection: React.FC = () => {
   ];
 
   const onSiteProgram = {
-    title: "On-Site Large Group Training",
+    title: "Restorative Therapy Program and Implementation Consulting",
     idealFor: "Long-term care homes looking to train multiple PSWs and healthcare providers at once.",
     learningPoints: [
       "Our team delivers training directly at your facility, reducing disruption and ensuring compliance.",
@@ -72,7 +73,7 @@ const TrainingProgramsSection: React.FC = () => {
 
         <div className="mt-16 pt-12 border-t border-gray-200">
           <h3 className="text-xl md:text-2xl font-bold text-brand-900 mb-4 text-center">
-            On-Site Training Option
+            On-Site Consulting Option
           </h3>
           <p className="text-gray-600 text-center max-w-3xl mx-auto mb-8">
             We can bring our expertise directly to your facility
