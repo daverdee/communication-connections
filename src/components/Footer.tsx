@@ -9,9 +9,16 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <Link to="/" className="text-2xl font-display font-bold text-brand-900 mb-4 inline-block">
-              <span className="text-brand-600">Communication</span> Connections
-            </Link>
+            <div className="flex flex-col items-start">
+              <img 
+                src="/lovable-uploads/b6dc2a26-813f-421b-8068-7783498280ba.png" 
+                alt="Communication Connections Logo" 
+                className="h-16 w-16 mb-3"
+              />
+              <Link to="/" className="text-2xl font-display font-bold text-brand-900 inline-block">
+                <span className="text-brand-600">Communication</span> Connections
+              </Link>
+            </div>
             <p className="text-gray-600 mt-4 max-w-md">
               Empowering healthcare professionals with industry-leading restorative therapy training for over 12 years.
             </p>
