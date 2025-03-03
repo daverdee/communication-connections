@@ -290,19 +290,12 @@ const Training = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-900 leading-tight animate-fade-in">
-                Empowering Healthcare Professionals with Industry-Leading Restorative Therapy Training
+                Training Programs
               </h1>
               
               <p className="mt-6 text-lg md:text-xl text-gray-600 animate-fade-in" style={{ animationDelay: "0.2s" }}>
                 Specialized programs designed to enhance care quality, ensure compliance, and improve resident outcomes in long-term care settings.
               </p>
-              
-              <div className="mt-8 flex flex-col items-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
-                <p className="mb-3 text-gray-600">find the right program for your team</p>
-                <Link to="/contact" className="btn-primary">
-                  Contact Us
-                </Link>
-              </div>
             </div>
           </div>
         </section>
