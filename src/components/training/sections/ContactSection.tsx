@@ -30,7 +30,9 @@ const ContactSection: React.FC = () => {
                 <Mail className="h-6 w-6" />
               </div>
               <p className="font-medium">Email Us</p>
-              <p className="text-white/90 break-all">david@communicationconnections.ca</p>
+              <p className="text-white/90">
+                david@communication<wbr />connections.ca
+              </p>
             </div>
             
             <div className="flex flex-col items-center">
