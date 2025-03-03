@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -9,8 +10,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <Link to="/" className="text-2xl font-display font-bold text-brand-900 mb-4 inline-block">
-              <span className="text-brand-600">Communication</span> Connections
+            <Link to="/" className="inline-block mb-4">
+              <img 
+                src="/lovable-uploads/5fb84a79-483b-4f4b-ac47-a9536bc75cce.png" 
+                alt="Communication Connections Logo" 
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="text-gray-600 mt-4 max-w-md">
               Empowering healthcare professionals with industry-leading restorative therapy training for over 12 years.
@@ -71,9 +76,16 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-gray-500 text-center">
-            © {currentYear} Communication Connections. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <p className="text-gray-500 text-center md:text-left">
+              © {currentYear} Communication Connections. All rights reserved.
+            </p>
+            <img 
+              src="/lovable-uploads/5fb84a79-483b-4f4b-ac47-a9536bc75cce.png" 
+              alt="Communication Connections Logo" 
+              className="h-10 w-auto mt-4 md:mt-0"
+            />
+          </div>
         </div>
       </div>
     </footer>

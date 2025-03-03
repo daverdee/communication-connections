@@ -53,9 +53,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-display font-bold">
-            <span className="text-[#A77790]">Communication</span>{" "}
-            <span className="text-[#84435B]">Connections</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/5fb84a79-483b-4f4b-ac47-a9536bc75cce.png" 
+              alt="Communication Connections Logo" 
+              className="h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}
