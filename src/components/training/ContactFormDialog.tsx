@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
-import { Phone, User } from "lucide-react";
+import { Phone, User, Mail } from "lucide-react";
 
 const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
   const { toast } = useToast();
@@ -15,6 +15,7 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    email: "",
     interest: "organization",
     hasHealthcareBackground: "yes",
     comments: "",
@@ -57,6 +58,7 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
       setFormData({
         name: "",
         phone: "",
+        email: "",
         interest: "organization",
         hasHealthcareBackground: "yes",
         comments: "",
@@ -90,6 +92,22 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
                 name="name"
                 placeholder="Your name"
                 value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          
+          <div>
+            <Label htmlFor="email">Email Address <span className="text-red-500">*</span></Label>
+            <div className="flex mt-1">
+              <Mail className="w-5 h-5 text-gray-400 mr-2 mt-3" />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Your email address"
+                value={formData.email}
                 onChange={handleChange}
                 required
               />
