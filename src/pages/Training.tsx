@@ -298,10 +298,10 @@ const Training = () => {
               </p>
               
               <div className="mt-8 flex flex-col items-center animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                <p className="mb-3 text-gray-600">find the right program for your team</p>
                 <Link to="/contact" className="btn-primary">
                   Contact Us
                 </Link>
-                <p className="mt-3 text-gray-600">find the right program for your team</p>
               </div>
             </div>
           </div>
