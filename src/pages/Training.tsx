@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle, XCircle, ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
@@ -20,7 +19,7 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    interest: "organization", // Default value
+    interest: "organization",
     comments: "",
   });
   const [loading, setLoading] = useState(false);
@@ -44,8 +43,6 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
     e.preventDefault();
     setLoading(true);
 
-    // In a real implementation, you would send this data to an email service
-    // For now, we'll simulate success with a delay
     setTimeout(() => {
       setLoading(false);
       toast({
@@ -53,7 +50,6 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
         description: "We'll get back to you within 2 hours. Thank you for your interest!",
       });
       
-      // Reset form and close dialog
       setFormData({
         name: "",
         phone: "",
@@ -63,7 +59,6 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
       setOpen(false);
     }, 1500);
 
-    // In production, you would add code to send to david@communicationconnections.ca
     console.log("Form submitted:", formData);
   };
 
@@ -291,7 +286,6 @@ const Training = () => {
     <>
       <Navbar />
       <main className="bg-white">
-        {/* Hero Section */}
         <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-white/90">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
@@ -307,13 +301,12 @@ const Training = () => {
                 <Link to="/contact" className="btn-primary">
                   Contact Us
                 </Link>
-                <p className="mt-3 text-gray-600">to find the right program for your team</p>
+                <p className="mt-3 text-gray-600">find the right program for your team</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Introduction Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
@@ -360,7 +353,6 @@ const Training = () => {
           </div>
         </section>
 
-        {/* Training Programs Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-900 mb-4 text-center">
@@ -384,7 +376,6 @@ const Training = () => {
           </div>
         </section>
 
-        {/* Why Choose Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto">
@@ -407,7 +398,6 @@ const Training = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="py-16 bg-brand-600 text-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-4xl mx-auto text-center">
