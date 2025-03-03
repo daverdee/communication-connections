@@ -21,7 +21,7 @@ const formSchema = z.object({
   city: z.string().min(2, { message: "City is required" }),
   province: z.string().min(2, { message: "Province is required" }),
   postalCode: z.string().min(6, { message: "Valid postal code is required" }),
-  manualSelection: z.enum(["manual1", "manual2", "both"], {
+  manualSelection: z.enum(["manual1", "manual2", "manual3", "both", "all"], {
     required_error: "Please select which manual(s) you want",
   }),
   specialInstructions: z.string().optional(),
@@ -61,6 +61,23 @@ const manuals = [
       "Palliative care resources",
       "Positive connections to family councils"
     ]
+  },
+  {
+    id: "manual3",
+    title: "PSW Restorative Therapy Basic Training - 1 day workshop",
+    author: "Communication Connections",
+    pages: 45,
+    price: 39.99,
+    description: "Workshop for PSW's working with a 'Restorative Therapy Approach' for seniors facing physical health challenges.",
+    details: [
+      "Mobility, transfers, and balance and fall prevention",
+      "Communication techniques and restorative dining",
+      "Activities of Daily Living (ADL's)",
+      "8 hour attendance certificate",
+      "Solution-oriented approach to health challenges",
+      "Techniques for revitalizing hope and meaningful living",
+      "Team building and multi-disciplinary support methods"
+    ]
   }
 ];
 
@@ -83,7 +100,9 @@ export default function TrainingManuals() {
     let total = 0;
     if (manualSelection === "manual1") total = 95;
     else if (manualSelection === "manual2") total = 45;
+    else if (manualSelection === "manual3") total = 39.99;
     else if (manualSelection === "both") total = 140;
+    else if (manualSelection === "all") total = 179.99;
     
     // Add shipping
     if (total > 0) total += 12;
@@ -134,7 +153,7 @@ export default function TrainingManuals() {
         {orderStep === "browse" && (
           <section className="py-16 bg-white">
             <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {manuals.map((manual) => (
                   <div key={manual.id} className="border border-gray-200 rounded-lg shadow-sm p-6 bg-white hover:shadow-md transition-shadow">
                     <div className="flex items-start mb-4">
@@ -159,7 +178,7 @@ export default function TrainingManuals() {
                     </ul>
                     
                     <div className="flex items-center justify-between mt-6">
-                      <span className="text-2xl font-bold text-brand-900">${manual.price} CAD</span>
+                      <span className="text-2xl font-bold text-brand-900">${manual.price.toFixed(2)} CAD</span>
                       <Button 
                         onClick={() => handleManualSelect(manual.id)}
                         className="bg-brand-600 hover:bg-brand-700"
@@ -177,17 +196,27 @@ export default function TrainingManuals() {
                   Shipping Information
                 </h3>
                 <p className="text-gray-700 mb-2">All manuals are shipped within Canada with a flat shipping rate of $12 CAD.</p>
-                <p className="text-gray-700">Order both manuals together for combined shipping and save!</p>
-                <Button 
-                  onClick={() => {
-                    setSelectedManual("both");
-                    setOrderStep("form");
-                  }}
-                  variant="outline" 
-                  className="mt-4"
-                >
-                  Order Both Manuals
-                </Button>
+                <p className="text-gray-700">Order multiple manuals together for combined shipping and save!</p>
+                <div className="flex flex-wrap gap-4 mt-4">
+                  <Button 
+                    onClick={() => {
+                      setSelectedManual("both");
+                      setOrderStep("form");
+                    }}
+                    variant="outline"
+                  >
+                    Order Manual 1 & 2 (Save $0)
+                  </Button>
+                  <Button 
+                    onClick={() => {
+                      setSelectedManual("all");
+                      setOrderStep("form");
+                    }}
+                    variant="outline" 
+                  >
+                    Order All Manuals (Save $0)
+                  </Button>
+                </div>
               </div>
             </div>
           </section>
@@ -222,7 +251,7 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="manual1" className="flex-1">
-                        Programs & Documentation for Successful Implementation - $95 CAD
+                        Programs & Documentation for Successful Implementation - $95.00 CAD
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -232,7 +261,17 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="manual2" className="flex-1">
-                        Recreation and Leisure in Long Term Care - $45 CAD
+                        Recreation and Leisure in Long Term Care - $45.00 CAD
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem 
+                        value="manual3" 
+                        id="manual3" 
+                        {...register("manualSelection")}
+                      />
+                      <Label htmlFor="manual3" className="flex-1">
+                        PSW Restorative Therapy Basic Training - $39.99 CAD
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -242,7 +281,17 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="both" className="flex-1">
-                        Both Manuals - $140 CAD
+                        Manual 1 & 2 - $140.00 CAD
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem 
+                        value="all" 
+                        id="all" 
+                        {...register("manualSelection")}
+                      />
+                      <Label htmlFor="all" className="flex-1">
+                        All Manuals - $179.99 CAD
                       </Label>
                     </div>
                   </RadioGroup>
@@ -335,6 +384,12 @@ export default function TrainingManuals() {
                         <span>$45.00</span>
                       </div>
                     )}
+                    {manualSelection === "manual3" && (
+                      <div className="flex justify-between">
+                        <span>PSW Restorative Therapy Basic Training</span>
+                        <span>$39.99</span>
+                      </div>
+                    )}
                     {manualSelection === "both" && (
                       <>
                         <div className="flex justify-between">
@@ -344,6 +399,22 @@ export default function TrainingManuals() {
                         <div className="flex justify-between">
                           <span>Recreation and Leisure in Long Term Care</span>
                           <span>$45.00</span>
+                        </div>
+                      </>
+                    )}
+                    {manualSelection === "all" && (
+                      <>
+                        <div className="flex justify-between">
+                          <span>Programs & Documentation for Successful Implementation</span>
+                          <span>$95.00</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Recreation and Leisure in Long Term Care</span>
+                          <span>$45.00</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>PSW Restorative Therapy Basic Training</span>
+                          <span>$39.99</span>
                         </div>
                       </>
                     )}
