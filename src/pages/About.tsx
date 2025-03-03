@@ -54,8 +54,8 @@ const About = () => {
                 <div className="relative">
                   <div className="aspect-square md:aspect-auto md:h-[500px] rounded-xl overflow-hidden shadow-xl">
                     <img 
-                      src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80" 
-                      alt="Our mission" 
+                      src="/lovable-uploads/7504ae71-64e7-4bbf-acec-27ed93c3e74d.png" 
+                      alt="Senior woman receiving care" 
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -158,8 +158,8 @@ const About = () => {
                 <div className="relative">
                   <div className="aspect-video rounded-xl overflow-hidden shadow-xl">
                     <img 
-                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80" 
-                      alt="Team collaboration" 
+                      src="/lovable-uploads/6f229167-9c22-47b9-b6a5-15476f6352d9.png" 
+                      alt="Healthcare professionals collaborating" 
                       className="w-full h-full object-cover"
                     />
                   </div>
