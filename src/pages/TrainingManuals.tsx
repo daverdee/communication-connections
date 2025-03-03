@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Book, Truck, CreditCard, DollarSign, CheckCircle } from "lucide-react";
+import { Book, Truck, CreditCard, DollarSign, CheckCircle, Info } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,7 @@ const manuals = [
     title: "Programs & Documentation for Successful Implementation",
     author: "Sharron J. Brigham",
     pages: 124,
-    price: 95,
+    price: 89.99,
     description: "A complete reference guide and resource guideline in support of Restorative Therapy principles.",
     details: [
       "Intended for facilitators and administrators",
@@ -49,7 +49,7 @@ const manuals = [
     title: "Recreation and Leisure in Long Term Care",
     author: "Communication Connections",
     pages: 96,
-    price: 45,
+    price: 59.99,
     description: "Written for Recreation and Leisure Care services in Long Term Care.",
     details: [
       "Understanding of Ministry requirements",
@@ -97,17 +97,23 @@ export default function TrainingManuals() {
   const manualSelection = watch("manualSelection");
 
   const calculateTotal = () => {
-    let total = 0;
-    if (manualSelection === "manual1") total = 95;
-    else if (manualSelection === "manual2") total = 45;
-    else if (manualSelection === "manual3") total = 39.99;
-    else if (manualSelection === "both") total = 140;
-    else if (manualSelection === "all") total = 179.99;
+    let subtotal = 0;
+    if (manualSelection === "manual1") subtotal = 89.99;
+    else if (manualSelection === "manual2") subtotal = 59.99;
+    else if (manualSelection === "manual3") subtotal = 39.99;
+    else if (manualSelection === "both") subtotal = 149.98; // 89.99 + 59.99
+    else if (manualSelection === "all") subtotal = 189.97; // 89.99 + 59.99 + 39.99
     
     // Add shipping
-    if (total > 0) total += 12;
+    if (subtotal > 0) subtotal += 12;
     
-    return total;
+    // Calculate HST (13%)
+    const hst = subtotal * 0.13;
+    
+    // Total with HST
+    const total = subtotal + hst;
+    
+    return { subtotal, hst, total };
   };
 
   const onSubmit = (data: FormValues) => {
@@ -146,6 +152,18 @@ export default function TrainingManuals() {
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Specialized resources written in Canada for Canadians and the Canadian Care System, designed to enhance care quality and ensure compliance with Canadian regulations.
             </p>
+          </div>
+        </section>
+
+        {/* Free Textbook Note */}
+        <section className="py-6 bg-brand-50">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center gap-3 p-4 border border-brand-200 rounded-lg bg-brand-50 max-w-3xl mx-auto">
+              <Info className="h-8 w-8 text-brand-600 flex-shrink-0" />
+              <p className="text-lg text-brand-800">
+                <span className="font-semibold">Special Offer:</span> Select courses will include the textbook at no additional cost. Please contact us for details on which courses qualify for free textbooks.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -205,7 +223,7 @@ export default function TrainingManuals() {
                     }}
                     variant="outline"
                   >
-                    Order Manual 1 & 2 (Save $0)
+                    Order Manual 1 & 2 (${149.98.toFixed(2)} + HST)
                   </Button>
                   <Button 
                     onClick={() => {
@@ -214,7 +232,7 @@ export default function TrainingManuals() {
                     }}
                     variant="outline" 
                   >
-                    Order All Manuals (Save $0)
+                    Order All Manuals (${189.97.toFixed(2)} + HST)
                   </Button>
                 </div>
               </div>
@@ -251,7 +269,7 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="manual1" className="flex-1">
-                        Programs & Documentation for Successful Implementation - $95.00 CAD
+                        Programs & Documentation for Successful Implementation - $89.99 CAD
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -261,7 +279,7 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="manual2" className="flex-1">
-                        Recreation and Leisure in Long Term Care - $45.00 CAD
+                        Recreation and Leisure in Long Term Care - $59.99 CAD
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -281,7 +299,7 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="both" className="flex-1">
-                        Manual 1 & 2 - $140.00 CAD
+                        Manual 1 & 2 - $149.98 CAD
                       </Label>
                     </div>
                     <div className="flex items-center space-x-2">
@@ -291,7 +309,7 @@ export default function TrainingManuals() {
                         {...register("manualSelection")}
                       />
                       <Label htmlFor="all" className="flex-1">
-                        All Manuals - $179.99 CAD
+                        All Manuals - $189.97 CAD
                       </Label>
                     </div>
                   </RadioGroup>
@@ -375,13 +393,13 @@ export default function TrainingManuals() {
                     {manualSelection === "manual1" && (
                       <div className="flex justify-between">
                         <span>Programs & Documentation for Successful Implementation</span>
-                        <span>$95.00</span>
+                        <span>$89.99</span>
                       </div>
                     )}
                     {manualSelection === "manual2" && (
                       <div className="flex justify-between">
                         <span>Recreation and Leisure in Long Term Care</span>
-                        <span>$45.00</span>
+                        <span>$59.99</span>
                       </div>
                     )}
                     {manualSelection === "manual3" && (
@@ -394,11 +412,11 @@ export default function TrainingManuals() {
                       <>
                         <div className="flex justify-between">
                           <span>Programs & Documentation for Successful Implementation</span>
-                          <span>$95.00</span>
+                          <span>$89.99</span>
                         </div>
                         <div className="flex justify-between">
                           <span>Recreation and Leisure in Long Term Care</span>
-                          <span>$45.00</span>
+                          <span>$59.99</span>
                         </div>
                       </>
                     )}
@@ -406,11 +424,11 @@ export default function TrainingManuals() {
                       <>
                         <div className="flex justify-between">
                           <span>Programs & Documentation for Successful Implementation</span>
-                          <span>$95.00</span>
+                          <span>$89.99</span>
                         </div>
                         <div className="flex justify-between">
                           <span>Recreation and Leisure in Long Term Care</span>
-                          <span>$45.00</span>
+                          <span>$59.99</span>
                         </div>
                         <div className="flex justify-between">
                           <span>PSW Restorative Therapy Basic Training</span>
@@ -424,10 +442,24 @@ export default function TrainingManuals() {
                         <span>$12.00</span>
                       </div>
                     )}
+                    
+                    {manualSelection && (
+                      <div className="flex justify-between pt-2 border-t border-gray-200">
+                        <span>Subtotal</span>
+                        <span>${calculateTotal().subtotal.toFixed(2)}</span>
+                      </div>
+                    )}
+                    
+                    {manualSelection && (
+                      <div className="flex justify-between">
+                        <span>HST (13%)</span>
+                        <span>${calculateTotal().hst.toFixed(2)}</span>
+                      </div>
+                    )}
                   </div>
                   <div className="border-t pt-2 flex justify-between font-bold">
                     <span>Total</span>
-                    <span>${calculateTotal().toFixed(2)} CAD</span>
+                    <span>${calculateTotal().total.toFixed(2)} CAD</span>
                   </div>
                 </div>
 
