@@ -75,42 +75,6 @@ export default {
                     800: '#075985',
                     900: '#0c4a6e',
                     950: '#082f49',
-                },
-                // New color palette based on Communication and Connections colors
-                comm: {
-                    DEFAULT: '#A77790', // Communication color
-                    50: '#F1E9ED',
-                    100: '#E4D3DB',
-                    200: '#D6BCCA',
-                    300: '#C7A6B8',
-                    400: '#B98FA7',
-                    500: '#A77790', // Main color
-                    600: '#8E5D76',
-                    700: '#74475D',
-                    800: '#5A3247',
-                    900: '#3F232F',
-                },
-                conn: {
-                    DEFAULT: '#84435B', // Connections color
-                    50: '#E9DCE1',
-                    100: '#D4BAC3',
-                    200: '#C097A5',
-                    300: '#AB7487',
-                    400: '#975169',
-                    500: '#84435B', // Main color
-                    600: '#6E384B',
-                    700: '#592E3C',
-                    800: '#43232D',
-                    900: '#2E171E',
-                },
-                accent: {
-                    DEFAULT: '#6E59A5', // Accent color (darker purple)
-                    light: '#D6BCFA', // Light accent
-                    lighter: '#E5DEFF', // Lighter accent
-                    dark: '#7E69AB', // Dark accent
-                },
-                neutral: {
-                    DEFAULT: '#F1F0FB', // Neutral background
                 }
 			},
 			borderRadius: {
