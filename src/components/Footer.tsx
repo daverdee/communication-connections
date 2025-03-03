@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 
@@ -7,8 +8,9 @@ const Footer = () => {
   return (
     <footer className="bg-gray-50 border-t">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Logo and description - takes more space */}
+          <div className="md:col-span-5">
             <div className="flex flex-col items-start">
               <img 
                 src="/lovable-uploads/b6dc2a26-813f-421b-8068-7783498280ba.png" 
@@ -43,7 +45,8 @@ const Footer = () => {
             </div>
           </div>
           
-          <div>
+          {/* Quick Links - adjusted columns */}
+          <div className="md:col-span-3 md:ml-6">
             <h3 className="text-lg font-semibold text-brand-900 mb-4">Quick Links</h3>
             <ul className="space-y-3">
               <li><Link to="/" className="text-gray-600 hover:text-brand-600 transition-colors">Home</Link></li>
@@ -54,7 +57,8 @@ const Footer = () => {
             </ul>
           </div>
           
-          <div>
+          {/* Contact Information - adjusted columns and padding */}
+          <div className="md:col-span-4 md:pr-10">
             <h3 className="text-lg font-semibold text-brand-900 mb-4">Contact Information</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
@@ -63,7 +67,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 text-brand-600 mr-2 mt-0.5" />
-                <a href="mailto:david@communicationconnections.ca" className="text-gray-600 hover:text-brand-600 transition-colors">
+                <a href="mailto:david@communicationconnections.ca" className="text-gray-600 hover:text-brand-600 transition-colors break-all">
                   david@communicationconnections.ca
                 </a>
               </li>
