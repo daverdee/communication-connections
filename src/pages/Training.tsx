@@ -285,15 +285,14 @@ const Training = () => {
   return (
     <>
       <Navbar />
-      <main className="bg-white">
-        <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-gradient-to-b from-white to-white/90">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-900 leading-tight animate-fade-in">
+      <main className="flex-grow pt-20">
+        <section className="bg-brand-50 py-12 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-900 mb-4">
                 Training Programs
               </h1>
-              
-              <p className="mt-6 text-lg md:text-xl text-gray-600 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              <p className="text-lg text-gray-700 mb-8">
                 Specialized programs designed to enhance care quality, ensure compliance, and improve resident outcomes in long-term care settings.
               </p>
             </div>
