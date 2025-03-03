@@ -13,10 +13,10 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #a77790aa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em #84435baa);
 }
 
 @keyframes logo-spin {
@@ -39,7 +39,7 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #a77790;
 }
 
 .btn-primary {
@@ -55,21 +55,21 @@
 }
 
 .nav-link {
-  @apply text-gray-600 hover:text-brand-600 transition-colors;
+  @apply text-brand-700 hover:text-brand-600 transition-colors;
 }
 
 .feature-card {
-  @apply p-6 rounded-lg border border-gray-100 bg-white shadow-sm hover:shadow-md transition-all;
+  @apply p-6 rounded-lg border border-brand-100 bg-white shadow-sm hover:shadow-md transition-all;
 }
 
 .testimonial-card {
-  @apply p-6 rounded-lg border border-gray-100 bg-white shadow-sm;
+  @apply p-6 rounded-lg border border-brand-100 bg-white shadow-sm;
 }
 
 .section-title {
-  @apply text-3xl font-bold text-brand-900 mb-4;
+  @apply text-3xl font-bold text-brand-800 mb-4;
 }
 
 .section-subtitle {
-  @apply text-lg text-gray-600 max-w-3xl mx-auto;
+  @apply text-lg text-brand-600 max-w-3xl mx-auto;
 }

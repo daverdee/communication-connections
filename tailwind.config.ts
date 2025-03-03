@@ -64,17 +64,17 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
                 brand: {
-                    50: '#f0f9ff',
-                    100: '#e0f2fe',
-                    200: '#bae6fd',
-                    300: '#7dd3fc',
-                    400: '#38bdf8',
-                    500: '#0ea5e9',
-                    600: '#0284c7',
-                    700: '#0369a1',
-                    800: '#075985',
-                    900: '#0c4a6e',
-                    950: '#082f49',
+                    50: '#f7eef2',
+                    100: '#eedce5',
+                    200: '#ddbacb',
+                    300: '#c696af',
+                    400: '#a77790', // Communication color
+                    500: '#95617c',
+                    600: '#84435b', // Connections color
+                    700: '#723a4f',
+                    800: '#5f3042',
+                    900: '#4d2836',
+                    950: '#3a1e28',
                 }
 			},
 			borderRadius: {

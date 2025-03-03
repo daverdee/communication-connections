@@ -53,8 +53,9 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-display font-bold text-brand-900">
-            <span className="text-brand-600">Communication</span> Connections
+          <Link to="/" className="text-2xl font-display font-bold">
+            <span className="text-[#A77790]">Communication</span>{" "}
+            <span className="text-[#84435B]">Connections</span>
           </Link>
 
           {/* Desktop Menu */}
@@ -76,9 +77,9 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button className="md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
             {isMenuOpen ? (
-              <X className="h-6 w-6 text-brand-900" />
+              <X className="h-6 w-6 text-brand-700" />
             ) : (
-              <Menu className="h-6 w-6 text-brand-900" />
+              <Menu className="h-6 w-6 text-brand-700" />
             )}
           </button>
         </div>
@@ -96,7 +97,7 @@ const Navbar = () => {
               key={link.name}
               to={link.path}
               className={`text-xl ${
-                isActive(link.path) ? "font-semibold text-brand-700" : "text-gray-600"
+                isActive(link.path) ? "font-semibold text-brand-600" : "text-brand-700"
               }`}
             >
               {link.name}
