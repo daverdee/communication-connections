@@ -1,3 +1,4 @@
+
 import React from "react";
 import TrainingProgram from "../TrainingProgram";
 
@@ -33,7 +34,7 @@ const TrainingProgramsSection: React.FC = () => {
         "Smaller, intensive learning environment for professionals taking on leadership roles.",
         "Certification ensures staff is qualified to oversee restorative programs and mentor other team members."
       ],
-      insight: "A great option for LTC homes that need a few key staff to take on leadership responsibilities in restorative care."
+      insight: "This certification is for professionals who will take on an enhanced leadership role in restorative therapy at their facility or community."
     }
   ];
 
