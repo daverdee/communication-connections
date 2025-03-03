@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,7 @@ const ContactSection: React.FC = () => {
                 <PhoneCall className="h-6 w-6" />
               </div>
               <p className="font-medium">Call Us</p>
-              <p className="text-white/90">416-298-7388</p>
+              <p className="text-white/90">647-839-6515</p>
             </div>
             
             <div className="flex flex-col items-center">

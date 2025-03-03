@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Mail, Phone, MapPin, MessageSquare, User } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -94,7 +93,7 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-brand-600 mt-1" />
                 <div>
                   <h3 className="font-medium">Phone</h3>
-                  <p className="text-gray-600">416-298-7388</p>
+                  <p className="text-gray-600">647-839-6515</p>
                 </div>
               </div>
               
