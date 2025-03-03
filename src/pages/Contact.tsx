@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Mail, Phone, MapPin, MessageSquare, User } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -66,7 +67,8 @@ const Contact = () => {
   return (
     <>
       <Navbar />
-      <div className="container max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      {/* Added pt-24 to create space between the fixed navbar and content */}
+      <div className="container max-w-6xl mx-auto py-12 pt-24 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-brand-900 mb-4">Contact Us</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
