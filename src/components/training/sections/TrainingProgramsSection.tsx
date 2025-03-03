@@ -44,7 +44,7 @@ const TrainingProgramsSection: React.FC = () => {
     learningPoints: [
       "Our team delivers training directly at your facility, reducing disruption and ensuring compliance.",
       "Train large groups of staff quickly and efficiently to meet custom restorative care mandates.",
-      "Led by our senior instructor with 12 years of specialized experience in restorative care training."
+      "Led by our senior consultant with 12 years of specialized experience in restorative care training."
     ],
     insight: "Cost-effective, scalable training that ensures your entire team is trained without sending staff off-site."
   };
