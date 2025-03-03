@@ -16,7 +16,7 @@ const TrainingProgramsSection: React.FC = () => {
       insight: "This program ensures that your staff is equipped to deliver restorative care in compliance with industry regulations."
     },
     {
-      title: "Advanced Restorative Lead Certification (2 Day Course)",
+      title: "Comprehensive Restorative Training (2 Day Course)",
       idealFor: "Senior care professionals looking to lead restorative care programs in their workplace.",
       learningPoints: [
         "Advanced program design for mobility, exercise, and restorative dining programs.",
@@ -27,7 +27,7 @@ const TrainingProgramsSection: React.FC = () => {
       insight: "This certification is for professionals who will take on an enhanced leadership role in restorative therapy at their facility."
     },
     {
-      title: "In-Person Certification at Our Toronto Training Facility (3 Day Course)",
+      title: "Restorative Therapy Implementation Training (3 Day Course)",
       idealFor: "LTC homes sending select staff for leadership-level restorative training.",
       learningPoints: [
         "Staff members attend an in-depth training session at our Toronto facility.",
