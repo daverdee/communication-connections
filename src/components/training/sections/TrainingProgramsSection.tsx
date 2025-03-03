@@ -20,7 +20,7 @@ const TrainingProgramsSection: React.FC = () => {
       idealFor: "Senior care professionals looking to lead restorative care programs in their workplace.",
       learningPoints: [
         "Advanced program design for mobility, exercise, and restorative dining programs.",
-        "Strategic leadership & planning to support a facility-wide restorative care approach.",
+        "Assessment and documentation techniques not covered in the fundamental course.",
         "Comprehensive documentation & compliance strategies for Ministry audits.",
         "Specialized training in dementia care, communication strategies, and fall prevention leadership."
       ],
@@ -31,6 +31,7 @@ const TrainingProgramsSection: React.FC = () => {
       idealFor: "LTC homes sending select staff for leadership-level restorative training.",
       learningPoints: [
         "Staff members attend an in-depth training session at our Toronto facility.",
+        "Strategic leadership & planning to support a facility-wide restorative care approach.",
         "Smaller, intensive learning environment for professionals taking on leadership roles.",
         "Certification ensures staff is qualified to oversee restorative programs and mentor other team members."
       ],
