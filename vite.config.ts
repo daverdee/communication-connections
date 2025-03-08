@@ -6,8 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Remove the hardcoded base URL to make it work on any domain
-  base: "/",
+  base: "http://communicationconnections.ca",
   server: {
     host: "::",
     port: 8080,
