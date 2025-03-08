@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -12,6 +13,7 @@ import {
   getDay
 } from "date-fns";
 import { Course, upcomingCourses } from "@/data/courseData";
+import ContactFormDialog from "@/components/training/ContactFormDialog";
 
 const CourseCalendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -43,6 +45,10 @@ const CourseCalendar = () => {
     setSelectedDate(date);
     const coursesOnDay = getCoursesForDate(date);
     setSelectedCourse(coursesOnDay.length > 0 ? coursesOnDay[0] : null);
+  };
+
+  const generateCourseInfoText = (course: Course) => {
+    return `I am interested in pricing and information regarding the ${course.title} being delivered on ${format(course.date, "MMMM d, yyyy")}.`;
   };
 
   return (
@@ -134,9 +140,14 @@ const CourseCalendar = () => {
             <h4 className="font-medium text-brand-700">{format(selectedCourse.date, "MMMM d, yyyy")}</h4>
             <p className="text-lg font-semibold text-brand-800 mt-1">{selectedCourse.title}</p>
             <p className="text-brand-600 mt-1">{selectedCourse.location}</p>
-            <a href="/contact" className="text-brand-600 hover:text-brand-800 font-medium mt-2 inline-block">
-              Request Information →
-            </a>
+            <ContactFormDialog 
+              trigger={
+                <button className="text-brand-600 hover:text-brand-800 font-medium mt-2 inline-block">
+                  Request Information →
+                </button>
+              }
+              initialComments={generateCourseInfoText(selectedCourse)}
+            />
           </div>
         ) : (
           <div className="p-4 bg-brand-50 rounded-lg border">

@@ -9,7 +9,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, User, Mail } from "lucide-react";
 
-const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
+interface ContactFormDialogProps {
+  trigger: React.ReactNode;
+  initialComments?: string;
+}
+
+const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogProps) => {
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -18,7 +23,7 @@ const ContactFormDialog = ({ trigger }: { trigger: React.ReactNode }) => {
     email: "",
     interest: "organization",
     hasHealthcareBackground: "yes",
-    comments: "",
+    comments: initialComments,
   });
   const [loading, setLoading] = useState(false);
 
