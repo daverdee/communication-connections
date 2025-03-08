@@ -16,7 +16,7 @@ const TrainingProgramsSection: React.FC = () => {
       insight: "This program ensures that your staff is equipped to deliver restorative care in compliance with industry regulations."
     },
     {
-      title: "Comprehensive Restorative Training (2 Day Course)",
+      title: "Comprehensive Restorative Therapy Training (2 Day Course)",
       idealFor: "Any and all healthcare staff that are involved with restorative care therapy.",
       learningPoints: [
         "Assessment and documentation techniques not covered in the fundamental course.",
