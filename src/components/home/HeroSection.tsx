@@ -1,7 +1,15 @@
 
 import { Link } from "react-router-dom";
+import { CalendarDays } from "lucide-react";
 
 const HeroSection = () => {
+  const scrollToCalendar = () => {
+    const calendarSection = document.getElementById("course-calendar");
+    if (calendarSection) {
+      calendarSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4 text-center">
@@ -21,6 +29,14 @@ const HeroSection = () => {
             <Link to="/training" className="btn-primary">
               View Our Training Programs
             </Link>
+            <a 
+              href="#course-calendar" 
+              onClick={scrollToCalendar} 
+              className="flex items-center gap-2 text-brand-600 hover:text-brand-800"
+            >
+              <CalendarDays className="h-5 w-5" />
+              See our course calendar
+            </a>
             <Link to="/contact" className="btn-secondary">
               Contact Us
             </Link>
