@@ -48,7 +48,7 @@ export const upcomingCourses: Course[] = [
   // April 22-24 three-day course
   {
     id: 3,
-    title: "Comprehensive Restorative Training (2 Day Course)",
+    title: "Comprehensive Restorative Therapy Training (3 Day Course)",
     date: set(new Date(), { year: 2024, month: 3, date: 22 }), // April 22, 2024
     location: "Finch HQ",
     type: "fundamental",
