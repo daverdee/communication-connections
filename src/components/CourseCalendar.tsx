@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -12,52 +11,7 @@ import {
   isToday,
   getDay
 } from "date-fns";
-
-interface Course {
-  id: number;
-  title: string;
-  date: Date;
-  location: string;
-  type: "fundamental" | "advanced";
-}
-
-const upcomingCourses: Course[] = [
-  {
-    id: 1,
-    title: "Fundamental Restorative Therapy Training",
-    date: new Date(new Date().setDate(new Date().getDate() + 5)),
-    location: "Toronto Training Facility",
-    type: "fundamental"
-  },
-  {
-    id: 2,
-    title: "Advanced Restorative Lead Certification",
-    date: new Date(new Date().setDate(new Date().getDate() + 12)),
-    location: "Toronto Training Facility",
-    type: "advanced"
-  },
-  {
-    id: 3,
-    title: "Fundamental Restorative Therapy Training",
-    date: new Date(new Date().setDate(new Date().getDate() + 19)),
-    location: "On-site at Sunrise Senior Living",
-    type: "fundamental"
-  },
-  {
-    id: 4,
-    title: "Advanced Restorative Lead Certification",
-    date: new Date(new Date().setDate(new Date().getDate() + 26)),
-    location: "Toronto Training Facility",
-    type: "advanced"
-  },
-  {
-    id: 5,
-    title: "Fundamental Restorative Therapy Training",
-    date: new Date(new Date().setDate(new Date().getDate() + 40)),
-    location: "On-site at Golden Manor",
-    type: "fundamental"
-  }
-];
+import { Course, upcomingCourses } from "@/data/courseData";
 
 const CourseCalendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -128,12 +82,10 @@ const CourseCalendar = () => {
           ))}
         </div>
         <div className="grid grid-cols-7 gap-1">
-          {/* Empty cells for days before the first day of month */}
           {Array.from({ length: firstDayOfMonth }).map((_, i) => (
             <div key={`empty-${i}`} className="aspect-square"></div>
           ))}
           
-          {/* Calendar days */}
           {daysInMonth.map((day) => {
             const coursesOnDay = getCoursesForDate(day);
             const hasCourse = coursesOnDay.length > 0;
