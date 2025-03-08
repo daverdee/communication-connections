@@ -8,7 +8,8 @@ import {
   addMonths,
   subMonths,
   isSameDay,
-  getDay
+  getDay,
+  addDays
 } from "date-fns";
 import { Course, upcomingCourses } from "@/data/courseData";
 import CalendarHeader from "./calendar/CalendarHeader";
@@ -39,9 +40,20 @@ const CourseCalendar = () => {
   const firstDayOfMonth = getDay(startOfMonth(currentMonth));
 
   const getCoursesForDate = (date: Date) => {
-    return upcomingCourses.filter(course => 
-      isSameDay(course.date, date)
-    );
+    return upcomingCourses.filter(course => {
+      // For courses with duration > 1 day, check if the date falls within the course period
+      if (course.durationDays && course.durationDays > 1) {
+        for (let i = 0; i < course.durationDays; i++) {
+          const courseDay = addDays(course.date, i);
+          if (isSameDay(courseDay, date)) {
+            return true;
+          }
+        }
+        return false;
+      }
+      // For single-day courses, simply check if the date matches
+      return isSameDay(course.date, date);
+    });
   };
 
   const handleDateClick = (date: Date) => {

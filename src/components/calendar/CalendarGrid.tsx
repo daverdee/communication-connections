@@ -17,6 +17,19 @@ const CalendarGrid = ({
   handleDateClick, 
   selectedDate 
 }: CalendarGridProps) => {
+  
+  const getDotColorForCourse = (course: Course) => {
+    if (course.title.includes("Fundamental")) {
+      return "bg-blue-500";
+    } else if (course.title.includes("Comprehensive")) {
+      return "bg-purple-600";
+    } else if (course.title.includes("Principles")) {
+      return "bg-orange-500";
+    } else {
+      return "bg-brand-400";
+    }
+  };
+  
   return (
     <div className="mb-6">
       <div className="grid grid-cols-7 gap-1 mb-2">
@@ -37,20 +50,6 @@ const CalendarGrid = ({
           const isSelected = selectedDate && isSameDay(day, selectedDate);
           const todayClass = isToday(day) ? "border-brand-400 font-medium" : "";
           
-          let dotColor = "";
-          if (hasCourse) {
-            const course = coursesOnDay[0];
-            if (course.title.includes("Fundamental")) {
-              dotColor = "bg-blue-500";
-            } else if (course.title.includes("Comprehensive")) {
-              dotColor = "bg-purple-600";
-            } else if (course.title.includes("Principles")) {
-              dotColor = "bg-orange-500";
-            } else {
-              dotColor = "bg-brand-400";
-            }
-          }
-          
           return (
             <div 
               key={day.toString()}
@@ -64,9 +63,14 @@ const CalendarGrid = ({
             >
               <span className="text-sm text-brand-700">{format(day, "d")}</span>
               {hasCourse && (
-                <div 
-                  className={`w-2 h-2 rounded-full mt-1 ${dotColor}`}
-                ></div>
+                <div className="flex space-x-1 mt-1">
+                  {coursesOnDay.map((course, index) => (
+                    <div 
+                      key={`${day.toString()}-${index}`}
+                      className={`w-2 h-2 rounded-full ${getDotColorForCourse(course)}`}
+                    ></div>
+                  ))}
+                </div>
               )}
             </div>
           );
