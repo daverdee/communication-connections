@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: 'dist', // Changed from 'build' to 'dist' which is Vite's default
+    outDir: 'build', // Changed from 'dist' to 'build' for cPanel
     emptyOutDir: true,
     sourcemap: false
   }
