@@ -37,6 +37,20 @@ const CalendarGrid = ({
           const isSelected = selectedDate && isSameDay(day, selectedDate);
           const todayClass = isToday(day) ? "border-brand-400 font-medium" : "";
           
+          let dotColor = "";
+          if (hasCourse) {
+            const course = coursesOnDay[0];
+            if (course.title.includes("Fundamental")) {
+              dotColor = "bg-blue-500";
+            } else if (course.title.includes("Comprehensive")) {
+              dotColor = "bg-purple-600";
+            } else if (course.title.includes("Principles")) {
+              dotColor = "bg-orange-500";
+            } else {
+              dotColor = "bg-brand-400";
+            }
+          }
+          
           return (
             <div 
               key={day.toString()}
@@ -51,9 +65,7 @@ const CalendarGrid = ({
               <span className="text-sm text-brand-700">{format(day, "d")}</span>
               {hasCourse && (
                 <div 
-                  className={`w-2 h-2 rounded-full mt-1 ${
-                    coursesOnDay[0].type === "fundamental" ? "bg-brand-400" : "bg-brand-600"
-                  }`}
+                  className={`w-2 h-2 rounded-full mt-1 ${dotColor}`}
                 ></div>
               )}
             </div>
