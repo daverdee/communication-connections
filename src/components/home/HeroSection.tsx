@@ -29,17 +29,20 @@ const HeroSection = () => {
             <Link to="/training" className="btn-primary">
               View Our Training Programs
             </Link>
+            <Link to="/contact" className="btn-secondary">
+              Contact Us
+            </Link>
+          </div>
+          
+          <div className="mt-5 animate-fade-in" style={{ animationDelay: "0.8s" }}>
             <a 
               href="#course-calendar" 
               onClick={scrollToCalendar} 
-              className="flex items-center gap-2 text-brand-600 hover:text-brand-800"
+              className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800"
             >
               <CalendarDays className="h-5 w-5" />
               See our course calendar
             </a>
-            <Link to="/contact" className="btn-secondary">
-              Contact Us
-            </Link>
           </div>
         </div>
       </div>
