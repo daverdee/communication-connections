@@ -9,12 +9,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { sendContactEmail } from "@/utils/emailService";
 
 const Contact = () => {
   const { toast } = useToast();
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     phone: "",
     interest: "organization", // Default value
     comments: "",
@@ -40,33 +42,46 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    // In a real implementation, you would send this data to an email service
-    // For now, we'll simulate success with a delay
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: "Inquiry Sent!",
-        description: "We'll get back to you within 2 hours. Thank you for your interest!",
-      });
+    try {
+      const success = await sendContactEmail(formData);
       
-      // Reset form and close dialog
-      setFormData({
-        name: "",
-        phone: "",
-        interest: "organization",
-        comments: "",
+      if (success) {
+        toast({
+          title: "Inquiry Sent!",
+          description: "We'll get back to you within 2 hours. Thank you for your interest!",
+        });
+        
+        // Reset form and close dialog
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          interest: "organization",
+          comments: "",
+        });
+        setOpen(false);
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: "Unable to send your inquiry. Please try again or contact us directly.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error during form submission:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Unable to send your inquiry. Please try again or contact us directly.",
+        variant: "destructive",
       });
-      setOpen(false);
-    }, 1500);
-
-    // In production, you would add code to send to david@communicationconnections.ca
-    console.log("Form submitted:", formData);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <>
       <Navbar />
-      {/* Added pt-24 to create space between the fixed navbar and content */}
       <div className="container max-w-6xl mx-auto py-12 pt-24 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-brand-900 mb-4">Contact Us</h1>
@@ -143,6 +158,21 @@ const Contact = () => {
                           name="name"
                           placeholder="Your name"
                           value={formData.name}
+                          onChange={handleChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
+                      <div className="flex mt-1">
+                        <User className="w-5 h-5 text-gray-400 mr-2 mt-3" />
+                        <Input
+                          id="email"
+                          name="email"
+                          placeholder="Your email"
+                          value={formData.email}
                           onChange={handleChange}
                           required
                         />

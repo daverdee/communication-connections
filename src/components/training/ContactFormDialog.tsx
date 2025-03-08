@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import { Phone, User, Mail } from "lucide-react";
+import { sendContactEmail } from "@/utils/emailService";
 
 interface ContactFormDialogProps {
   trigger: React.ReactNode;
@@ -61,23 +62,41 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
     e.preventDefault();
     setLoading(true);
 
-    setTimeout(() => {
-      setLoading(false);
-      toast({
-        title: "Inquiry Sent!",
-        description: "We'll get back to you within 2 hours. Thank you for your interest!",
-      });
+    try {
+      const success = await sendContactEmail(formData);
       
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        interest: "organization",
-        hasHealthcareBackground: "yes",
-        comments: "",
+      if (success) {
+        toast({
+          title: "Inquiry Sent!",
+          description: "We'll get back to you within 2 hours. Thank you for your interest!",
+        });
+        
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          interest: "organization",
+          hasHealthcareBackground: "yes",
+          comments: "",
+        });
+        setOpen(false);
+      } else {
+        toast({
+          title: "Something went wrong",
+          description: "Unable to send your inquiry. Please try again or contact us directly.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("Error during form submission:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Unable to send your inquiry. Please try again or contact us directly.",
+        variant: "destructive",
       });
-      setOpen(false);
-    }, 1500);
+    } finally {
+      setLoading(false);
+    }
 
     console.log("Form submitted:", formData);
   };
