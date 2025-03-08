@@ -18,8 +18,8 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    interest: "organization", // Default value
-    hasHealthcareBackground: "yes", // Adding this field for consistency
+    interest: "organization",
+    hasHealthcareBackground: "yes",
     comments: "",
   });
   const [loading, setLoading] = useState(false);
@@ -51,6 +51,8 @@ const Contact = () => {
     setLoading(true);
 
     try {
+      console.log("Submitting form data:", formData);
+      
       const success = await sendContactEmail(formData);
       
       if (success) {
@@ -59,7 +61,6 @@ const Contact = () => {
           description: "We'll get back to you within 2 hours. Thank you for your interest!",
         });
         
-        // Reset form and close dialog
         setFormData({
           name: "",
           email: "",

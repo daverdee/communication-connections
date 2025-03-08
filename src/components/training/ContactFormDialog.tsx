@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -28,7 +27,6 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
   });
   const [loading, setLoading] = useState(false);
 
-  // Update comments field when initialComments changes or dialog opens
   useEffect(() => {
     setFormData(prev => ({
       ...prev,
@@ -63,6 +61,8 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
     setLoading(true);
 
     try {
+      console.log("Submitting form data from dialog:", formData);
+      
       const success = await sendContactEmail(formData);
       
       if (success) {
@@ -97,8 +97,6 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
     } finally {
       setLoading(false);
     }
-
-    console.log("Form submitted:", formData);
   };
 
   return (
@@ -106,7 +104,6 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
       open={open} 
       onOpenChange={(newOpenState) => {
         setOpen(newOpenState);
-        // Reset form if dialog is closing
         if (!newOpenState) {
           setFormData({
             name: "",
