@@ -2,8 +2,7 @@
 import emailjs from 'emailjs-com';
 
 // Initialize EmailJS with your User ID
-// You'll need to create an account at https://www.emailjs.com/
-emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS User ID
+emailjs.init("qrE2DuP8Ut_zHJrSm"); // EmailJS User ID
 
 interface EmailParams {
   name: string;
@@ -29,8 +28,8 @@ export const sendContactEmail = async (params: EmailParams): Promise<boolean> =>
 
     // Send the email using EmailJS
     const response = await emailjs.send(
-      "YOUR_SERVICE_ID", // Replace with your EmailJS Service ID
-      "YOUR_TEMPLATE_ID", // Replace with your EmailJS Template ID
+      "service_yksoj5v", // EmailJS Service ID
+      "template_cxesopo", // EmailJS Template ID
       templateParams
     );
 
