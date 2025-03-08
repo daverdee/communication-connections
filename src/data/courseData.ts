@@ -24,7 +24,7 @@ export const upcomingCourses: Course[] = [
   // March 31 - April 2 three-day course
   {
     id: 1,
-    title: "Fundamental Restorative Therapy Training",
+    title: "Restorative Therapy Training and Principles for Successful Implementation (3 Day Course)",
     date: set(new Date(), { year: 2024, month: 2, date: 31 }), // March 31, 2024 (month is 0-indexed)
     location: "Finch HQ",
     type: "fundamental",
@@ -36,7 +36,7 @@ export const upcomingCourses: Course[] = [
   // April 11 one-day course
   {
     id: 2,
-    title: "Advanced Restorative Lead Certification",
+    title: "Fundamental Restorative Therapy Training (1 Day Course)",
     date: set(new Date(), { year: 2024, month: 3, date: 11 }), // April 11, 2024
     location: "Finch HQ",
     type: "advanced",
@@ -48,7 +48,7 @@ export const upcomingCourses: Course[] = [
   // April 22-24 three-day course
   {
     id: 3,
-    title: "Fundamental Restorative Therapy Training",
+    title: "Comprehensive Restorative Training (2 Day Course)",
     date: set(new Date(), { year: 2024, month: 3, date: 22 }), // April 22, 2024
     location: "Finch HQ",
     type: "fundamental",
@@ -60,7 +60,7 @@ export const upcomingCourses: Course[] = [
   // April 25 one-day course
   {
     id: 4,
-    title: "Advanced Restorative Lead Certification",
+    title: "Fundamental Restorative Therapy Training (1 Day Course)",
     date: set(new Date(), { year: 2024, month: 3, date: 25 }), // April 25, 2024
     location: "Finch HQ",
     type: "advanced",
