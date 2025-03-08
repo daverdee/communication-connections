@@ -2,6 +2,7 @@
 import { format } from "date-fns";
 import { Course } from "@/data/courseData";
 import ContactFormDialog from "@/components/training/ContactFormDialog";
+import { Button } from "@/components/ui/button";
 
 interface CourseDetailsProps {
   selectedDate: Date | null;
@@ -28,9 +29,9 @@ const CourseDetails = ({ selectedDate, selectedCourse, generateCourseInfoText }:
           )}
           <ContactFormDialog 
             trigger={
-              <button className="text-brand-600 hover:text-brand-800 font-medium mt-2 inline-block">
-                Request Information →
-              </button>
+              <Button variant="outline" className="mt-4">
+                Request Information About this Course
+              </Button>
             }
             initialComments={generateCourseInfoText(selectedCourse)}
           />
