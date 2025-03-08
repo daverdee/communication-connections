@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Calendar, ChevronLeft, ChevronRight } from "lucide-react";
+import { Calendar, ChevronLeft, ChevronRight, CalendarPlus } from "lucide-react";
 import {
   format,
   startOfMonth,
@@ -49,6 +49,10 @@ const CourseCalendar = () => {
 
   const generateCourseInfoText = (course: Course) => {
     return `I am interested in pricing and information regarding the ${course.title} being delivered on ${format(course.date, "MMMM d, yyyy")}.`;
+  };
+
+  const generateCustomDateText = () => {
+    return "I am interested in training session for dates not listed on your calendar.";
   };
 
   return (
@@ -140,6 +144,15 @@ const CourseCalendar = () => {
             <h4 className="font-medium text-brand-700">{format(selectedCourse.date, "MMMM d, yyyy")}</h4>
             <p className="text-lg font-semibold text-brand-800 mt-1">{selectedCourse.title}</p>
             <p className="text-brand-600 mt-1">{selectedCourse.location}</p>
+            {selectedCourse.trainer && (
+              <p className="text-brand-600">Trainer: {selectedCourse.trainer}</p>
+            )}
+            {selectedCourse.startTime && selectedCourse.endTime && (
+              <p className="text-brand-600">Time: {selectedCourse.startTime} - {selectedCourse.endTime}</p>
+            )}
+            {selectedCourse.durationDays && selectedCourse.durationDays > 1 && (
+              <p className="text-brand-600">Duration: {selectedCourse.durationDays} days</p>
+            )}
             <ContactFormDialog 
               trigger={
                 <button className="text-brand-600 hover:text-brand-800 font-medium mt-2 inline-block">
@@ -158,6 +171,19 @@ const CourseCalendar = () => {
             </p>
           </div>
         )}
+        
+        {/* Custom Date Request Button */}
+        <div className="mt-6 text-center">
+          <ContactFormDialog 
+            trigger={
+              <button className="flex items-center mx-auto px-4 py-2 bg-brand-100 text-brand-700 rounded-md hover:bg-brand-200 transition-colors">
+                <CalendarPlus className="mr-2 h-5 w-5" />
+                Request a Training Custom Date
+              </button>
+            }
+            initialComments={generateCustomDateText()}
+          />
+        </div>
       </div>
     </div>
   );
