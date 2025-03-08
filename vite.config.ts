@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: 'build',
+    outDir: 'dist', // Changed from 'build' to 'dist' which is Vite's default
     emptyOutDir: true,
     sourcemap: false
   }
