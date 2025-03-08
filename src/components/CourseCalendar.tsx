@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import { Calendar, ChevronLeft, ChevronRight, CalendarPlus } from "lucide-react";
 import {
   format,
   startOfMonth,
@@ -9,11 +8,14 @@ import {
   addMonths,
   subMonths,
   isSameDay,
-  isToday,
   getDay
 } from "date-fns";
 import { Course, upcomingCourses } from "@/data/courseData";
-import ContactFormDialog from "@/components/training/ContactFormDialog";
+import CalendarHeader from "./calendar/CalendarHeader";
+import CalendarGrid from "./calendar/CalendarGrid";
+import CalendarLegend from "./calendar/CalendarLegend";
+import CourseDetails from "./calendar/CourseDetails";
+import CustomDateRequest from "./calendar/CustomDateRequest";
 
 const CourseCalendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -57,133 +59,30 @@ const CourseCalendar = () => {
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 animate-fade-in">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-bold text-brand-800 flex items-center">
-          <Calendar className="mr-2 h-5 w-5 text-brand-400" /> 
-          Upcoming Course Dates
-        </h3>
-        <div className="flex space-x-2">
-          <button 
-            onClick={prevMonth}
-            className="p-2 rounded-md hover:bg-brand-50 transition-colors"
-            aria-label="Previous month"
-          >
-            <ChevronLeft className="h-5 w-5 text-brand-600" />
-          </button>
-          <div className="font-medium text-lg text-brand-700">
-            {format(currentMonth, "MMMM yyyy")}
-          </div>
-          <button 
-            onClick={nextMonth}
-            className="p-2 rounded-md hover:bg-brand-50 transition-colors"
-            aria-label="Next month"
-          >
-            <ChevronRight className="h-5 w-5 text-brand-600" />
-          </button>
-        </div>
-      </div>
-
-      <div className="mb-6">
-        <div className="grid grid-cols-7 gap-1 mb-2">
-          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-            <div key={day} className="text-center font-medium text-brand-500 text-sm py-2">
-              {day}
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-7 gap-1">
-          {Array.from({ length: firstDayOfMonth }).map((_, i) => (
-            <div key={`empty-${i}`} className="aspect-square"></div>
-          ))}
-          
-          {daysInMonth.map((day) => {
-            const coursesOnDay = getCoursesForDate(day);
-            const hasCourse = coursesOnDay.length > 0;
-            const isSelected = selectedDate && isSameDay(day, selectedDate);
-            const todayClass = isToday(day) ? "border-brand-400 font-medium" : "";
-            
-            return (
-              <div 
-                key={day.toString()}
-                onClick={() => handleDateClick(day)}
-                className={`
-                  aspect-square border rounded-md flex flex-col items-center justify-center 
-                  cursor-pointer transition-all hover:border-brand-400
-                  ${isSelected ? "bg-brand-50 border-brand-600" : ""}
-                  ${todayClass}
-                `}
-              >
-                <span className="text-sm text-brand-700">{format(day, "d")}</span>
-                {hasCourse && (
-                  <div 
-                    className={`w-2 h-2 rounded-full mt-1 ${
-                      coursesOnDay[0].type === "fundamental" ? "bg-brand-400" : "bg-brand-600"
-                    }`}
-                  ></div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <CalendarHeader 
+        currentMonth={currentMonth}
+        prevMonth={prevMonth}
+        nextMonth={nextMonth}
+      />
+      
+      <CalendarGrid 
+        daysInMonth={daysInMonth}
+        firstDayOfMonth={firstDayOfMonth}
+        getCoursesForDate={getCoursesForDate}
+        handleDateClick={handleDateClick}
+        selectedDate={selectedDate}
+      />
       
       <div className="mt-6">
-        <div className="flex items-center space-x-6 mb-4">
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-brand-400 mr-2"></div>
-            <span className="text-sm text-brand-700">Fundamental Training</span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-brand-600 mr-2"></div>
-            <span className="text-sm text-brand-700">Advanced Certification</span>
-          </div>
-        </div>
+        <CalendarLegend />
         
-        {selectedCourse ? (
-          <div className="p-4 bg-brand-50 rounded-lg border animate-fade-in">
-            <h4 className="font-medium text-brand-700">{format(selectedCourse.date, "MMMM d, yyyy")}</h4>
-            <p className="text-lg font-semibold text-brand-800 mt-1">{selectedCourse.title}</p>
-            <p className="text-brand-600 mt-1">{selectedCourse.location}</p>
-            {selectedCourse.trainer && (
-              <p className="text-brand-600">Trainer: {selectedCourse.trainer}</p>
-            )}
-            {selectedCourse.startTime && selectedCourse.endTime && (
-              <p className="text-brand-600">Time: {selectedCourse.startTime} - {selectedCourse.endTime}</p>
-            )}
-            {selectedCourse.durationDays && selectedCourse.durationDays > 1 && (
-              <p className="text-brand-600">Duration: {selectedCourse.durationDays} days</p>
-            )}
-            <ContactFormDialog 
-              trigger={
-                <button className="text-brand-600 hover:text-brand-800 font-medium mt-2 inline-block">
-                  Request Information →
-                </button>
-              }
-              initialComments={generateCourseInfoText(selectedCourse)}
-            />
-          </div>
-        ) : (
-          <div className="p-4 bg-brand-50 rounded-lg border">
-            <p className="text-brand-600">
-              {selectedDate 
-                ? "No courses scheduled for this date." 
-                : "Select a date to view course details."}
-            </p>
-          </div>
-        )}
+        <CourseDetails 
+          selectedDate={selectedDate}
+          selectedCourse={selectedCourse}
+          generateCourseInfoText={generateCourseInfoText}
+        />
         
-        {/* Custom Date Request Button */}
-        <div className="mt-6 text-center">
-          <ContactFormDialog 
-            trigger={
-              <button className="flex items-center mx-auto px-4 py-2 bg-brand-100 text-brand-700 rounded-md hover:bg-brand-200 transition-colors">
-                <CalendarPlus className="mr-2 h-5 w-5" />
-                Request a Training Custom Date
-              </button>
-            }
-            initialComments={generateCustomDateText()}
-          />
-        </div>
+        <CustomDateRequest generateCustomDateText={generateCustomDateText} />
       </div>
     </div>
   );
