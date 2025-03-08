@@ -99,9 +99,9 @@ const CalendarGrid = ({
             >
               <span className="text-sm text-brand-700 mt-1">{format(day, "d")}</span>
               
-              {/* Multi-day course indicators */}
+              {/* Multi-day course indicators - moved up to match single-day indicators */}
               {hasMultiDayCourse && (
-                <div className="absolute -left-px -right-px flex justify-center bottom-4 gap-1">
+                <div className="absolute -left-px -right-px flex justify-center mt-1 gap-1">
                   {multiDayCourses.map((course, idx) => {
                     const color = getDotColorForCourse(course);
                     const courseKey = `multi-${day.toString()}-${idx}`;
@@ -160,4 +160,3 @@ const CalendarGrid = ({
 };
 
 export default CalendarGrid;
-
