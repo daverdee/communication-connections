@@ -1,4 +1,3 @@
-
 import { format, isSameDay, isToday, isWithinInterval, addDays } from "date-fns";
 import { Course } from "@/data/courseData";
 import { CalendarClock } from "lucide-react";
@@ -31,19 +30,16 @@ const CalendarGrid = ({
     }
   };
 
-  // Helper to determine if a date is the first day of a multi-day course
   const isFirstDayOfCourse = (date: Date, course: Course) => {
     return isSameDay(date, course.date) && course.durationDays && course.durationDays > 1;
   };
 
-  // Helper to determine if a date is the last day of a multi-day course
   const isLastDayOfCourse = (date: Date, course: Course) => {
     if (!course.durationDays || course.durationDays <= 1) return false;
     const lastDay = addDays(course.date, course.durationDays - 1);
     return isSameDay(date, lastDay);
   };
 
-  // Helper to determine if a date is a middle day of a multi-day course
   const isMiddleDayOfCourse = (date: Date, course: Course) => {
     if (!course.durationDays || course.durationDays <= 2) return false;
     
@@ -73,11 +69,9 @@ const CalendarGrid = ({
           const isSelected = selectedDate && isSameDay(day, selectedDate);
           const todayClass = isToday(day) ? "border-brand-400 font-medium" : "";
           
-          // Determine if this day is part of a multi-day course
           const multiDayCourses = coursesOnDay.filter(course => course.durationDays && course.durationDays > 1);
           const hasMultiDayCourse = multiDayCourses.length > 0;
           
-          // Check if day is start, middle, or end of any multi-day course
           const firstDays = multiDayCourses.filter(course => isFirstDayOfCourse(day, course));
           const middleDays = multiDayCourses.filter(course => isMiddleDayOfCourse(day, course));
           const lastDays = multiDayCourses.filter(course => isLastDayOfCourse(day, course));
@@ -99,27 +93,23 @@ const CalendarGrid = ({
             >
               <span className="text-sm text-brand-700 mt-1">{format(day, "d")}</span>
               
-              {/* Multi-day course indicators - moved up to match single-day indicators */}
               {hasMultiDayCourse && (
-                <div className="absolute -left-px -right-px flex justify-center mt-1 gap-1">
+                <div className="absolute -left-px -right-px flex justify-center mt-3 gap-1">
                   {multiDayCourses.map((course, idx) => {
                     const color = getDotColorForCourse(course);
                     const courseKey = `multi-${day.toString()}-${idx}`;
                     
                     return (
                       <div key={courseKey} className="relative">
-                        {/* Left connector */}
                         {(isMiddle || isEnd) && (
                           <div className={`absolute h-1 w-4 left-0 top-0.5 -ml-4 ${color.replace('bg-', 'bg-')}`}></div>
                         )}
                         
-                        {/* Day indicator */}
                         <div 
                           className={`h-2 w-2 rounded-full ${color} relative z-10`}
                           title={course.title}
                         ></div>
                         
-                        {/* Right connector */}
                         {(isStart || isMiddle) && (
                           <div className={`absolute h-1 w-4 right-0 top-0.5 -mr-4 ${color.replace('bg-', 'bg-')}`}></div>
                         )}
@@ -129,7 +119,6 @@ const CalendarGrid = ({
                 </div>
               )}
               
-              {/* Single day course indicators */}
               {hasCourse && (
                 <div className="flex space-x-1 mt-1">
                   {coursesOnDay
@@ -145,7 +134,6 @@ const CalendarGrid = ({
                 </div>
               )}
               
-              {/* Multi-day course icon */}
               {isStart && (
                 <div className="absolute top-1 right-1">
                   <CalendarClock className="w-3 h-3 text-brand-400" />
