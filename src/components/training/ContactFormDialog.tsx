@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -26,6 +26,14 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
     comments: initialComments,
   });
   const [loading, setLoading] = useState(false);
+
+  // Update comments field when initialComments changes or dialog opens
+  useEffect(() => {
+    setFormData(prev => ({
+      ...prev,
+      comments: initialComments
+    }));
+  }, [initialComments, open]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -75,7 +83,23 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
   };
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog 
+      open={open} 
+      onOpenChange={(newOpenState) => {
+        setOpen(newOpenState);
+        // Reset form if dialog is closing
+        if (!newOpenState) {
+          setFormData({
+            name: "",
+            phone: "",
+            email: "",
+            interest: "organization",
+            hasHealthcareBackground: "yes",
+            comments: "",
+          });
+        }
+      }}
+    >
       <DialogTrigger asChild>
         {trigger}
       </DialogTrigger>
