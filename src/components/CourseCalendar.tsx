@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   format,
@@ -41,7 +40,6 @@ const CourseCalendar = () => {
 
   const getCoursesForDate = (date: Date) => {
     return upcomingCourses.filter(course => {
-      // For courses with duration > 1 day, check if the date falls within the course period
       if (course.durationDays && course.durationDays > 1) {
         for (let i = 0; i < course.durationDays; i++) {
           const courseDay = addDays(course.date, i);
@@ -51,7 +49,6 @@ const CourseCalendar = () => {
         }
         return false;
       }
-      // For single-day courses, simply check if the date matches
       return isSameDay(course.date, date);
     });
   };
@@ -65,16 +62,13 @@ const CourseCalendar = () => {
   const generateCourseInfoText = (course: Course) => {
     let courseInfo = `I am interested in the "${course.title}" `;
     
-    // Add date information
     courseInfo += `scheduled for ${format(course.date, "MMMM d, yyyy")}`;
     
-    // Add duration if it's a multi-day course
     if (course.durationDays && course.durationDays > 1) {
       const endDate = addDays(course.date, course.durationDays - 1);
       courseInfo += ` through ${format(endDate, "MMMM d, yyyy")}`;
     }
     
-    // Add location and trainer info if available
     if (course.location) {
       courseInfo += ` at ${course.location}`;
     }
