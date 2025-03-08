@@ -1,6 +1,5 @@
 
 import { Link } from "react-router-dom";
-import { CalendarDays } from "lucide-react";
 
 const HeroSection = () => {
   const scrollToCalendar = () => {
@@ -42,7 +41,6 @@ const HeroSection = () => {
               to="/training" 
               className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800"
             >
-              <CalendarDays className="h-5 w-5" />
               Learn more about our programs
             </Link>
           </div>
