@@ -63,11 +63,33 @@ const CourseCalendar = () => {
   };
 
   const generateCourseInfoText = (course: Course) => {
-    return `I am interested in pricing and information regarding the ${course.title} being delivered on ${format(course.date, "MMMM d, yyyy")}.`;
+    let courseInfo = `I am interested in the "${course.title}" `;
+    
+    // Add date information
+    courseInfo += `scheduled for ${format(course.date, "MMMM d, yyyy")}`;
+    
+    // Add duration if it's a multi-day course
+    if (course.durationDays && course.durationDays > 1) {
+      const endDate = addDays(course.date, course.durationDays - 1);
+      courseInfo += ` through ${format(endDate, "MMMM d, yyyy")}`;
+    }
+    
+    // Add location and trainer info if available
+    if (course.location) {
+      courseInfo += ` at ${course.location}`;
+    }
+    
+    if (course.trainer) {
+      courseInfo += ` with trainer ${course.trainer}`;
+    }
+    
+    courseInfo += ". Please send me pricing and availability information.";
+    
+    return courseInfo;
   };
 
   const generateCustomDateText = () => {
-    return "I am interested in training session for dates not listed on your calendar.";
+    return "I am interested in scheduling a custom training session on dates that are not currently listed on your calendar. Please contact me with information about availability and pricing options.";
   };
 
   return (
