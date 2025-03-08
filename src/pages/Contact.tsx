@@ -19,6 +19,7 @@ const Contact = () => {
     email: "",
     phone: "",
     interest: "organization", // Default value
+    hasHealthcareBackground: "yes", // Adding this field for consistency
     comments: "",
   });
   const [loading, setLoading] = useState(false);
@@ -35,6 +36,13 @@ const Contact = () => {
     setFormData((prev) => ({
       ...prev,
       interest: value,
+    }));
+  };
+
+  const handleHealthcareBackgroundChange = (value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      hasHealthcareBackground: value,
     }));
   };
 
@@ -57,6 +65,7 @@ const Contact = () => {
           email: "",
           phone: "",
           interest: "organization",
+          hasHealthcareBackground: "yes",
           comments: "",
         });
         setOpen(false);
@@ -208,6 +217,24 @@ const Contact = () => {
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="personal" id="personal" />
                           <Label htmlFor="personal">Myself personally</Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+                    
+                    <div>
+                      <Label>I have a healthcare background: <span className="text-red-500">*</span></Label>
+                      <RadioGroup 
+                        className="mt-2"
+                        value={formData.hasHealthcareBackground} 
+                        onValueChange={handleHealthcareBackgroundChange}
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="yes" id="yes" />
+                          <Label htmlFor="yes">Yes</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="no" id="no" />
+                          <Label htmlFor="no">No</Label>
                         </div>
                       </RadioGroup>
                     </div>
