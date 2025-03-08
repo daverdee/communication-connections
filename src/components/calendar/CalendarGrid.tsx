@@ -1,3 +1,4 @@
+
 import { format, isSameDay, isToday, isWithinInterval, addDays } from "date-fns";
 import { Course } from "@/data/courseData";
 import { CalendarClock } from "lucide-react";
@@ -94,7 +95,7 @@ const CalendarGrid = ({
               <span className="text-sm text-brand-700 mt-1">{format(day, "d")}</span>
               
               {hasMultiDayCourse && (
-                <div className="absolute -left-px -right-px flex justify-center mt-3 gap-1">
+                <div className="absolute -left-px -right-px flex justify-center mt-8 gap-1">
                   {multiDayCourses.map((course, idx) => {
                     const color = getDotColorForCourse(course);
                     const courseKey = `multi-${day.toString()}-${idx}`;
