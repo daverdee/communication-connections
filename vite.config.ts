@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Remove the hardcoded base URL to make it work on any domain
+  // Base URL for assets
   base: "/",
   server: {
     host: "::",
@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: 'dist',
+    outDir: 'build',
     emptyOutDir: true,
     sourcemap: false
   }

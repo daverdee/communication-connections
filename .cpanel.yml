@@ -3,7 +3,7 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/communic/public_html/
-    - /bin/cp -R dist/* $DEPLOYPATH
+    - /bin/cp -R build/* $DEPLOYPATH
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp -R assets/* $DEPLOYPATH/assets/
     - /bin/cp -R public/* $DEPLOYPATH/public/
