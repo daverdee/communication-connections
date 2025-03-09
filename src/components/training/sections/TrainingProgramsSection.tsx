@@ -39,12 +39,12 @@ const TrainingProgramsSection: React.FC = () => {
   ];
 
   const onSiteProgram = {
-    title: "Restorative Therapy Program and Implementation Consulting",
-    idealFor: "Long-term care homes looking to train multiple PSWs and healthcare providers at once.",
+    title: "Restorative Therapy Facility Consulting",
+    idealFor: "Care facilities or communities that are looking to build a customized restorative care solution that fits their specific needs.",
     learningPoints: [
       "Our team delivers training directly at your facility, reducing disruption and ensuring compliance.",
       "Train large groups of staff quickly and efficiently to meet custom restorative care mandates.",
-      "Led by our senior consultant with 12 years of specialized experience in restorative care training."
+      "Led by our senior consultant with 12 years of specialized experience in restorative care training, a former practitioner who will work with specific MDS/RAI needs."
     ],
     insight: "Cost-effective, scalable training that ensures your entire team is trained without sending staff off-site."
   };
