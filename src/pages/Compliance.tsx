@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -59,7 +60,7 @@ const Compliance = () => {
       delay: "0s"
     },
     {
-      quote: "The restorative therapy certification has transformed how our team approaches resident care. We've documented a 25% reduction in falls since implementing the program.",
+      quote: "The restorative therapy certification has transformed how our team approaches resident care. Since becoming certified, we've observed a significant increase in our residents' ability to perform their activities of daily living independently. This has not only improved their quality of life but also boosted staff morale.",
       author: "Director of Care",
       position: "Retirement Community",
       organization: "Eastern Ontario",
