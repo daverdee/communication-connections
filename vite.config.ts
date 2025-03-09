@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: 'artifact', // Changed from 'build' to 'artifact'
+    outDir: 'build', // Changed from 'dist' to 'build' for cPanel
     emptyOutDir: true,
     sourcemap: false
   }
