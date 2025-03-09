@@ -53,25 +53,25 @@ const Compliance = () => {
   const testimonials = [
     {
       quote: "Communication Connections' training program has been instrumental in helping our facility meet and exceed Ministry compliance standards. Our staff feel more confident and our residents have shown remarkable improvements.",
-      author: "Sarah Johnson",
-      position: "Director of Care",
-      organization: "Sunshine Manor LTC",
+      author: "Director of Care",
+      position: "Long-Term Care Home",
+      organization: "Ontario",
       rating: 5,
       delay: "0s"
     },
     {
       quote: "The restorative therapy certification has transformed how our team approaches resident care. We've documented a 25% reduction in falls since implementing the program.",
-      author: "Michael Chen",
-      position: "Administrator",
-      organization: "Golden Years Retirement Home",
+      author: "Director of Care",
+      position: "Retirement Community",
+      organization: "Eastern Ontario",
       rating: 5,
       delay: "0.3s"
     },
     {
       quote: "Not only did this training help us pass our Ministry audit with flying colors, but the resident outcomes have been incredible. Highly recommend for any LTC facility.",
-      author: "Patricia Thompson",
-      position: "Executive Director",
-      organization: "Oakwood Senior Living",
+      author: "Director of Care",
+      position: "Senior Living Facility",
+      organization: "Greater Toronto Area",
       rating: 5,
       delay: "0.6s"
     }
