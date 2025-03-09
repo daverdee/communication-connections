@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -68,7 +67,7 @@ const Compliance = () => {
       delay: "0.3s"
     },
     {
-      quote: "The quality of the training program was exceptional. The trainers were knowledgeable, engaging, and passionate about restorative care. Our entire staff raved about the experience and the skills they gained. I believe every long-term care facility should certify their staff in Restorative Care - it's truly transformative.",
+      quote: "The quality of the training program was exceptional. The trainers were knowledgeable, engaging, and passionate about restorative care. Our entire staff raved about the experience and the skills they gained. I believe every long-term care facility should certify their staff in Restorative Care.",
       author: "Director of Care",
       position: "Senior Living Facility",
       organization: "Northern Ontario",
