@@ -46,7 +46,7 @@ const TrainingProgramsSection: React.FC = () => {
       "Train large groups of staff quickly and efficiently to meet custom restorative care mandates.",
       "Led by our senior consultant with 12 years of specialized experience in restorative care training, a former practitioner who will work with specific MDS/RAI needs."
     ],
-    insight: "Cost-effective, scalable training that ensures your entire team is trained without sending staff off-site."
+    insight: "Customized approach working directly with your staff to develop facility-specific programs that meet certification requirements while addressing your unique needs."
   };
 
   return (
