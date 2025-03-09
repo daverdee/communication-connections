@@ -55,7 +55,7 @@ const Compliance = () => {
       quote: "Communication Connections' training program has been instrumental in helping our facility meet and exceed Ministry compliance standards. Our staff feel more confident and our residents have shown remarkable improvements.",
       author: "Director of Care",
       position: "Long-Term Care Home",
-      organization: "Ontario",
+      organization: "Greater Toronto Area",
       rating: 5,
       delay: "0s"
     },
@@ -71,7 +71,7 @@ const Compliance = () => {
       quote: "Not only did this training help us pass our Ministry audit with flying colors, but the resident outcomes have been incredible. Highly recommend for any LTC facility.",
       author: "Director of Care",
       position: "Senior Living Facility",
-      organization: "Greater Toronto Area",
+      organization: "Northern Ontario",
       rating: 5,
       delay: "0.6s"
     }
