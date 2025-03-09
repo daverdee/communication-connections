@@ -11,7 +11,7 @@ const ShippingInfo: React.FC = () => {
         <Truck className="mr-2 h-5 w-5" />
         Shipping Information
       </h3>
-      <p className="text-gray-700 mb-2">All manuals are shipped within Canada with a flat shipping rate of $12 CAD.</p>
+      <p className="text-gray-700 mb-2">All manuals are shipped within Canada with a flat shipping rate of $15 CAD.</p>
       <p className="text-gray-700">Order multiple manuals together for combined shipping and save!</p>
       <div className="flex flex-wrap gap-4 mt-4">
         <ContactFormDialog 
