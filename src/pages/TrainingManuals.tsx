@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -12,6 +13,7 @@ import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { sendManualOrderEmail } from "@/utils/emailService";
+import ContactFormDialog from "@/components/training/ContactFormDialog";
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Name is required" }),
@@ -170,6 +172,11 @@ export default function TrainingManuals() {
     setSelectedManual(null);
   };
 
+  const getManualTitleById = (id: string): string => {
+    const manual = manuals.find(manual => manual.id === id);
+    return manual ? manual.title : "All Manuals";
+  };
+
   return (
     <>
       <Navbar />
@@ -228,12 +235,14 @@ export default function TrainingManuals() {
                     
                     <div className="flex items-center justify-between mt-6">
                       <span className="text-2xl font-bold text-brand-900">${manual.price.toFixed(2)} CAD</span>
-                      <Button 
-                        onClick={() => handleManualSelect(manual.id)}
-                        className="bg-brand-600 hover:bg-brand-700"
-                      >
-                        Order Now
-                      </Button>
+                      <ContactFormDialog 
+                        trigger={
+                          <Button className="bg-brand-600 hover:bg-brand-700">
+                            Order Now
+                          </Button>
+                        }
+                        initialComments={`I'm interested in ordering the "${manual.title}" manual. Please provide me with information on how to purchase.`}
+                      />
                     </div>
                   </div>
                 ))}
@@ -247,15 +256,14 @@ export default function TrainingManuals() {
                 <p className="text-gray-700 mb-2">All manuals are shipped within Canada with a flat shipping rate of $12 CAD.</p>
                 <p className="text-gray-700">Order multiple manuals together for combined shipping and save!</p>
                 <div className="flex flex-wrap gap-4 mt-4">
-                  <Button 
-                    onClick={() => {
-                      setSelectedManual("all");
-                      setOrderStep("form");
-                    }}
-                    variant="outline" 
-                  >
-                    Order All Manuals (${189.97.toFixed(2)} + HST)
-                  </Button>
+                  <ContactFormDialog 
+                    trigger={
+                      <Button variant="outline">
+                        Order All Manuals (${189.97.toFixed(2)} + HST)
+                      </Button>
+                    }
+                    initialComments={`I'm interested in ordering the complete set of all training manuals. Please provide me with information on how to purchase the full collection.`}
+                  />
                 </div>
               </div>
             </div>
