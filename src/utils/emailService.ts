@@ -1,4 +1,3 @@
-
 import emailjs from 'emailjs-com';
 
 // Initialize EmailJS with your User ID
@@ -41,7 +40,7 @@ export const sendContactEmail = async (params: EmailParams): Promise<boolean> =>
   }
 };
 
-interface ManualOrderParams {
+export interface ManualOrderParams {
   fullName: string;
   email: string;
   phone: string;
@@ -56,36 +55,41 @@ interface ManualOrderParams {
   total: number;
 }
 
-export const sendManualOrderEmail = async (params: ManualOrderParams): Promise<boolean> => {
+export const sendManualOrderEmail = async (data: ManualOrderParams): Promise<boolean> => {
   try {
-    // Prepare template parameters
+    // Template ID for the manual order template in EmailJS
+    const templateId = 'template_manual_order'; // Replace with your actual template ID
+    
+    // Service ID from EmailJS
+    const serviceId = 'service_aq9y0mp'; // Replace with your actual service ID
+    
+    // Public Key from EmailJS
+    const publicKey = 'sCmQrXlfTXS1HUScv';
+    
+    // Prepare the template parameters
     const templateParams = {
-      to_email: "david@communicationconnections.ca",
-      from_name: params.fullName,
-      from_email: params.email,
-      from_phone: params.phone,
-      address: params.address,
-      city: params.city,
-      province: params.province,
-      postal_code: params.postalCode,
-      manual_selection: params.manualSelection,
-      special_instructions: params.specialInstructions || "No special instructions",
-      subtotal: `$${params.subtotal.toFixed(2)}`,
-      hst: `$${params.hst.toFixed(2)}`,
-      total: `$${params.total.toFixed(2)}`,
+      to_email: 'david@communicationconnections.ca',
+      from_name: data.fullName,
+      from_email: data.email,
+      phone: data.phone,
+      address: data.address,
+      city: data.city,
+      province: data.province,
+      postal_code: data.postalCode,
+      manual_selection: data.manualSelection,
+      special_instructions: data.specialInstructions || 'None',
+      subtotal: `$${data.subtotal.toFixed(2)}`,
+      hst: `$${data.hst.toFixed(2)}`,
+      total: `$${data.total.toFixed(2)}`,
     };
-
+    
     // Send the email using EmailJS
-    const response = await emailjs.send(
-      "service_yksoj5v", // EmailJS Service ID
-      "template_cxesopo", // EmailJS Template ID
-      templateParams
-    );
-
-    console.log("Manual order email sent successfully:", response);
+    await emailjs.send(serviceId, templateId, templateParams, publicKey);
+    
+    console.log('Manual order email sent successfully!');
     return true;
   } catch (error) {
-    console.error("Failed to send manual order email:", error);
+    console.error('Error sending manual order email:', error);
     return false;
   }
 };

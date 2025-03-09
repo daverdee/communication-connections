@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -140,8 +139,15 @@ export default function TrainingManuals() {
       
       // Send the email with order information
       const success = await sendManualOrderEmail({
-        ...data,
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        city: data.city,
+        province: data.province,
+        postalCode: data.postalCode,
         manualSelection: manualSelectionText,
+        specialInstructions: data.specialInstructions,
         subtotal,
         hst,
         total
