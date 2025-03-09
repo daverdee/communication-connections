@@ -40,3 +40,52 @@ export const sendContactEmail = async (params: EmailParams): Promise<boolean> =>
     return false;
   }
 };
+
+interface ManualOrderParams {
+  fullName: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  province: string;
+  postalCode: string;
+  manualSelection: string;
+  specialInstructions?: string;
+  subtotal: number;
+  hst: number;
+  total: number;
+}
+
+export const sendManualOrderEmail = async (params: ManualOrderParams): Promise<boolean> => {
+  try {
+    // Prepare template parameters
+    const templateParams = {
+      to_email: "david@communicationconnections.ca",
+      from_name: params.fullName,
+      from_email: params.email,
+      from_phone: params.phone,
+      address: params.address,
+      city: params.city,
+      province: params.province,
+      postal_code: params.postalCode,
+      manual_selection: params.manualSelection,
+      special_instructions: params.specialInstructions || "No special instructions",
+      subtotal: `$${params.subtotal.toFixed(2)}`,
+      hst: `$${params.hst.toFixed(2)}`,
+      total: `$${params.total.toFixed(2)}`,
+    };
+
+    // Send the email using EmailJS
+    const response = await emailjs.send(
+      "service_yksoj5v", // EmailJS Service ID
+      "template_cxesopo", // EmailJS Template ID
+      templateParams
+    );
+
+    console.log("Manual order email sent successfully:", response);
+    return true;
+  } catch (error) {
+    console.error("Failed to send manual order email:", error);
+    return false;
+  }
+};

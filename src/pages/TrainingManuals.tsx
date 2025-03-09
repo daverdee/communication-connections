@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { sendManualOrderEmail } from "@/utils/emailService";
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Name is required" }),
@@ -114,17 +115,49 @@ export default function TrainingManuals() {
     return { subtotal, hst, total };
   };
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
       console.log("Order submitted:", data);
+      
+      // Get the calculated totals
+      const { subtotal, hst, total } = calculateTotal();
+      
+      // Map manual selection to readable text for email
+      let manualSelectionText = "";
+      if (data.manualSelection === "manual1") {
+        manualSelectionText = "Programs & Documentation for Successful Implementation";
+      } else if (data.manualSelection === "manual2") {
+        manualSelectionText = "Recreation and Leisure in Long Term Care";
+      } else if (data.manualSelection === "manual3") {
+        manualSelectionText = "PSW Restorative Therapy Basic Training";
+      } else if (data.manualSelection === "all") {
+        manualSelectionText = "All Manuals (Complete Set)";
+      }
+      
+      // Send the email with order information
+      const success = await sendManualOrderEmail({
+        ...data,
+        manualSelection: manualSelectionText,
+        subtotal,
+        hst,
+        total
+      });
+      
+      if (success) {
+        toast.success("Your order has been placed successfully!");
+        setOrderStep("confirmation");
+        reset();
+      } else {
+        toast.error("There was a problem processing your order. Please try again or contact us directly.");
+      }
+    } catch (error) {
+      console.error("Error submitting order:", error);
+      toast.error("There was a problem processing your order. Please try again or contact us directly.");
+    } finally {
       setIsSubmitting(false);
-      setOrderStep("confirmation");
-      reset();
-      toast.success("Your order has been placed successfully!");
-    }, 1500);
+    }
   };
 
   const handleManualSelect = (id: string) => {
