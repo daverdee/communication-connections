@@ -68,7 +68,7 @@ const Compliance = () => {
       delay: "0.3s"
     },
     {
-      quote: "Not only did this training help us pass our Ministry audit with flying colors, but the resident outcomes have been incredible. Highly recommend for any LTC facility.",
+      quote: "The quality of the training program was exceptional. The trainers were knowledgeable, engaging, and passionate about restorative care. Our entire staff raved about the experience and the skills they gained. I believe every long-term care facility should certify their staff in Restorative Care - it's truly transformative.",
       author: "Director of Care",
       position: "Senior Living Facility",
       organization: "Northern Ontario",
