@@ -12,21 +12,21 @@ import CtaSection from "@/components/home/CtaSection";
 const testimonials = [
   {
     quote: "Communication Connections provided our LTC facility with exceptional training. Our staff now confidently delivers superior restorative care while ensuring full compliance with Ministry standards.",
-    author: "Sarah Johnson",
-    position: "Director of Care",
+    author: "Director of Care",
+    position: "Administrator",
     organization: "Sunrise Senior Living",
     rating: 5
   },
   {
     quote: "The restorative therapy training transformed how our team approaches resident care. We've seen dramatic improvements in mobility and independence among our residents.",
-    author: "Michael Chen",
+    author: "Facility Manager",
     position: "Administrator",
     organization: "Golden Manor LTC",
     rating: 5
   },
   {
     quote: "As a PSW, this certification has advanced my career and improved the quality of care I provide. The trainers are knowledgeable and the course materials are comprehensive.",
-    author: "Priya Patel",
+    author: "Healthcare Professional",
     position: "Personal Support Worker",
     organization: "Cedarcroft Place",
     rating: 5
