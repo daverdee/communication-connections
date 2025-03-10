@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import Navbar from "@/components/Navbar";
@@ -17,8 +16,8 @@ const Contact = () => {
     name: "",
     email: "",
     phone: "",
-    interest: "organization",
-    hasHealthcareBackground: "yes",
+    interest: "organization" as const,
+    hasHealthcareBackground: "yes" as const,
     comments: "",
   });
   const [loading, setLoading] = useState(false);
@@ -31,14 +30,14 @@ const Contact = () => {
     }));
   };
 
-  const handleRadioChange = (value: string) => {
+  const handleRadioChange = (value: "organization" | "individual" | "personal") => {
     setFormData((prev) => ({
       ...prev,
       interest: value,
     }));
   };
 
-  const handleHealthcareBackgroundChange = (value: string) => {
+  const handleHealthcareBackgroundChange = (value: "yes" | "no") => {
     setFormData((prev) => ({
       ...prev,
       hasHealthcareBackground: value,
