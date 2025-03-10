@@ -1,5 +1,5 @@
 
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -13,8 +13,8 @@ interface ContactFormProps {
   loading: boolean;
   onSubmit: (e: FormEvent) => Promise<void>;
   onInputChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-  onInterestChange: (value: string) => void;
-  onHealthcareBackgroundChange: (value: string) => void;
+  onInterestChange: (value: "organization" | "individual" | "personal") => void;
+  onHealthcareBackgroundChange: (value: "yes" | "no") => void;
 }
 
 const ContactForm = ({

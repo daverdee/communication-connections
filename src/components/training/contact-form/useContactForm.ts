@@ -1,11 +1,10 @@
 
 import { useState } from "react";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/utils/emailService";
 import { trackEvent } from '@/utils/analytics';
+import { FormData } from "./types";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -17,12 +16,10 @@ const formSchema = z.object({
   phone: z.string().min(10, {
     message: "Please enter a valid phone number.",
   }),
-  interest: z.enum(["organization", "individual", "personal"]).default("organization"),
-  hasHealthcareBackground: z.enum(["yes", "no"]).default("yes"),
+  interest: z.enum(["organization", "individual", "personal"]),
+  hasHealthcareBackground: z.enum(["yes", "no"]),
   comments: z.string().optional(),
 });
-
-export type FormData = z.infer<typeof formSchema>;
 
 export function useContactForm(initialComments: string = "") {
   const [open, setOpen] = useState(false);
@@ -42,11 +39,11 @@ export function useContactForm(initialComments: string = "") {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRadioChange = (value: string) => {
+  const handleRadioChange = (value: "organization" | "individual" | "personal") => {
     setFormData((prev) => ({ ...prev, interest: value }));
   };
 
-  const handleHealthcareBackgroundChange = (value: string) => {
+  const handleHealthcareBackgroundChange = (value: "yes" | "no") => {
     setFormData((prev) => ({ ...prev, hasHealthcareBackground: value }));
   };
 

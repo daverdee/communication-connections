@@ -4,12 +4,12 @@ import emailjs from 'emailjs-com';
 // Initialize EmailJS with your User ID
 emailjs.init("qrE2DuP8Ut_zHJrSm"); // EmailJS User ID
 
-interface EmailParams {
+export interface EmailParams {
   name: string;
   email: string;
   phone: string;
-  interest?: string;
-  hasHealthcareBackground?: string;
+  interest?: "organization" | "individual" | "personal";
+  hasHealthcareBackground?: "yes" | "no";
   comments?: string;
 }
 
