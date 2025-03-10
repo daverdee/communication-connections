@@ -28,7 +28,7 @@ const ContactFormDialog = ({ trigger, initialComments = "" }: ContactFormDialogP
         }
       }}
     >
-      <DialogTrigger asChild>
+      <DialogTrigger asChild onClick={() => setOpen(true)}>
         {trigger}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">

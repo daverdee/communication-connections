@@ -17,32 +17,34 @@ import AnalyticsProvider from "./components/AnalyticsProvider";
 
 const queryClient = new QueryClient();
 
-// Initialize Google Analytics
-useEffect(() => {
-  initGA();
-}, []);
+const App = () => {
+  // Initialize Google Analytics
+  useEffect(() => {
+    initGA();
+  }, []);
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AnalyticsProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/training" element={<Training />} />
-            <Route path="/compliance" element={<Compliance />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/training-manuals" element={<TrainingManuals />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AnalyticsProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AnalyticsProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/training" element={<Training />} />
+              <Route path="/compliance" element={<Compliance />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/training-manuals" element={<TrainingManuals />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnalyticsProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;

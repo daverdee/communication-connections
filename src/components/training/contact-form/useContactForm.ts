@@ -1,10 +1,10 @@
+
 import { useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 import { sendContactEmail } from "@/utils/emailService";
-import { ContactFormData } from "@/components/contact/types";
 import { trackEvent } from '@/utils/analytics';
 
 const formSchema = z.object({
@@ -17,35 +17,53 @@ const formSchema = z.object({
   phone: z.string().min(10, {
     message: "Please enter a valid phone number.",
   }),
-  interest: z.enum(["organization", "individual"]).default("organization"),
+  interest: z.enum(["organization", "individual", "personal"]).default("organization"),
   hasHealthcareBackground: z.enum(["yes", "no"]).default("yes"),
   comments: z.string().optional(),
 });
 
-type FormData = z.infer<typeof formSchema>;
+export type FormData = z.infer<typeof formSchema>;
 
-export function useContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export function useContactForm(initialComments: string = "") {
+  const [open, setOpen] = useState(false);
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    phone: "",
+    interest: "organization",
+    hasHealthcareBackground: "yes",
+    comments: initialComments || "",
+  });
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
-  const form = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      interest: "organization",
-      hasHealthcareBackground: "yes",
-      comments: "",
-    },
-  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
-  const handleSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
+  const handleRadioChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, interest: value }));
+  };
+
+  const handleHealthcareBackgroundChange = (value: string) => {
+    setFormData((prev) => ({ ...prev, hasHealthcareBackground: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
     
     try {
-      console.log("Form data to submit:", data);
-      const success = await sendContactEmail(data);
+      console.log("Form data to submit:", formData);
+      const success = await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        interest: formData.interest,
+        hasHealthcareBackground: formData.hasHealthcareBackground,
+        comments: formData.comments
+      });
       
       if (success) {
         // Track successful form submission event
@@ -55,7 +73,9 @@ export function useContactForm() {
           title: "Inquiry Sent!",
           description: "We'll get back to you within 2 hours. Thank you for your interest!",
         });
-        form.reset();
+        
+        resetForm();
+        setOpen(false);
       } else {
         toast({
           title: "Something went wrong",
@@ -71,9 +91,30 @@ export function useContactForm() {
         variant: "destructive",
       });
     } finally {
-      setIsSubmitting(false);
+      setLoading(false);
     }
   };
+  
+  const resetForm = () => {
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      interest: "organization",
+      hasHealthcareBackground: "yes",
+      comments: initialComments || "",
+    });
+  };
 
-  return { form, isSubmitting, handleSubmit };
+  return { 
+    formData, 
+    loading, 
+    open, 
+    setOpen, 
+    handleChange, 
+    handleRadioChange, 
+    handleHealthcareBackgroundChange, 
+    handleSubmit,
+    resetForm
+  };
 }
