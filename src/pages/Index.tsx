@@ -25,7 +25,7 @@ const testimonials = [
     rating: 5
   },
   {
-    quote: "As a PSW, this certification has advanced my career and improved the quality of care I provide. The trainers are knowledgeable and the course materials are comprehensive. Since becoming certified, my hourly wage increased which has been beneficial.",
+    quote: "As a PSW, this certification has advanced my career and improved the quality of care I provide. The trainers are knowledgeable and the course materials are comprehensive. Also since becoming certified, my hourly wage has increased significantly.",
     author: "Healthcare Professional",
     position: "Personal Support Worker",
     organization: "Cedarcroft Place",
