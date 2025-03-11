@@ -1,4 +1,3 @@
-
 import { Users, BookOpen, Award, Heart, Building, Puzzle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -183,11 +182,10 @@ const About = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {[
                 { number: "12+", label: "Years of Experience" },
-                { number: "300+", label: "LTC Facilities Served" },
-                { number: "5,000+", label: "Professionals Trained" },
+                { number: "1,000+", label: "Professionals Trained" },
                 { number: "98%", label: "Client Satisfaction" },
               ].map((stat, index) => (
                 <div 
