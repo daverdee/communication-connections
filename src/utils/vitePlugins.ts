@@ -1,6 +1,6 @@
 
 import { ViteDevServer } from 'vite';
-import { Connect } from 'vite/types/connect';
+import type { Connect } from 'vite';
 
 // Custom plugin to handle SPA routing
 export function spaFallbackPlugin() {
