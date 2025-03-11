@@ -8,7 +8,11 @@ export function spaFallbackPlugin() {
     name: 'spa-fallback',
     configureServer(server: ViteDevServer) {
       return () => {
-        server.middlewares.use((req: Connect.IncomingMessage, res: Connect.ServerResponse, next: Connect.NextFunction) => {
+        server.middlewares.use((
+          req: Connect.IncomingMessage, 
+          res: any, 
+          next: Connect.NextFunction
+        ) => {
           if (req.url?.includes('.')) {
             // Skip for assets
             return next();
