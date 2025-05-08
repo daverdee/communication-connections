@@ -1,6 +1,6 @@
 
 import React from "react";
-import { University } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 const AcademicPartnershipsSection: React.FC = () => {
   return (
@@ -8,7 +8,7 @@ const AcademicPartnershipsSection: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-6">
-            <University className="h-9 w-9 text-brand-600 mr-3" />
+            <BookOpen className="h-9 w-9 text-brand-600 mr-3" />
             <h2 className="text-2xl md:text-3xl font-bold text-brand-900">
               Academic Partnerships
             </h2>
