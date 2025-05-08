@@ -17,7 +17,7 @@ export const sendContactEmail = async (params: EmailParams): Promise<boolean> =>
   try {
     // Prepare template parameters
     const templateParams = {
-      to_email: "david@communicationconnections.ca",
+      to_email: "leilacccs@gmail.com",
       from_name: params.name,
       from_email: params.email || "No email provided",
       from_phone: params.phone,
@@ -69,7 +69,7 @@ export const sendManualOrderEmail = async (data: ManualOrderParams): Promise<boo
     
     // Prepare the template parameters
     const templateParams = {
-      to_email: 'david@communicationconnections.ca',
+      to_email: 'leilacccs@gmail.com',
       from_name: data.fullName,
       from_email: data.email,
       phone: data.phone,
