@@ -18,8 +18,8 @@ import CourseDetails from "./calendar/CourseDetails";
 import CustomDateRequest from "./calendar/CustomDateRequest";
 
 const CourseCalendar = () => {
-  // Initialize with current month (March or April 2024)
-  const [currentMonth, setCurrentMonth] = useState(new Date(2024, 3, 1)); // Start with April 2024
+  // Initialize with current month instead of hardcoded date
+  const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
