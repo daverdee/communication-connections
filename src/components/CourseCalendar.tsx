@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   format,
@@ -18,7 +19,7 @@ import CourseDetails from "./calendar/CourseDetails";
 import CustomDateRequest from "./calendar/CustomDateRequest";
 
 const CourseCalendar = () => {
-  // Initialize with current month instead of hardcoded date
+  // Use current date for initial month
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
