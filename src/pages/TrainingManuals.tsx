@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
@@ -7,6 +6,7 @@ import { sendManualOrderEmail } from "@/utils/emailService";
 import TitleSection from "@/components/training/manuals/TitleSection";
 import FreeTextbookNote from "@/components/training/manuals/FreeTextbookNote";
 import ManualsList from "@/components/training/manuals/ManualsList";
+import AboutAuthor from "@/components/training/manuals/AboutAuthor";
 import ShippingInfo from "@/components/training/manuals/ShippingInfo";
 import OrderForm, { FormValues } from "@/components/training/manuals/OrderForm";
 import OrderConfirmation from "@/components/training/manuals/OrderConfirmation";
@@ -99,6 +99,9 @@ export default function TrainingManuals() {
                 manuals={manuals} 
                 onManualSelect={handleManualSelect} 
               />
+              
+              {/* About Author Section */}
+              <AboutAuthor />
               
               <ShippingInfo />
             </div>
