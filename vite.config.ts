@@ -17,9 +17,11 @@ export default defineConfig(({ mode }) => ({
       allow: ['..'],
     },
     hmr: {
-      // Try to fix connection issues
-      timeout: 5000,
-      overlay: true
+      // Improved connection handling
+      timeout: 10000,
+      overlay: true,
+      clientPort: 443,
+      host: "localhost"
     },
   },
   plugins: [
@@ -36,6 +38,13 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'build', // Using 'build' for cPanel and Netlify compatibility
     emptyOutDir: true,
-    sourcemap: mode === 'development'
+    sourcemap: mode === 'development',
+    rollupOptions: {
+      onwarn(warning, warn) {
+        // Suppress certain warnings
+        if (warning.code === 'EMPTY_BUNDLE') return;
+        warn(warning);
+      }
+    }
   }
 }));
