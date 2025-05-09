@@ -35,7 +35,9 @@ const ManualCard: React.FC<ManualCardProps> = ({
         </div>
         <div>
           <h3 className="text-xl font-semibold text-brand-900">{title}</h3>
-          <p className="text-gray-500">{author} • {pages} pages</p>
+          <p className="text-gray-500">
+            <span className="font-medium">By {author}</span> • {pages} pages
+          </p>
         </div>
       </div>
       
