@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    outDir: 'build', // Changed from 'dist' to 'build' for cPanel
+    outDir: 'build', // Using 'build' for cPanel and Netlify compatibility
     emptyOutDir: true,
     sourcemap: false
   }
