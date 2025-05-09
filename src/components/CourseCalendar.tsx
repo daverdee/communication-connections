@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import {
   format,
@@ -42,14 +43,14 @@ const CourseCalendar = () => {
     return upcomingCourses.filter(course => {
       if (course.durationDays && course.durationDays > 1) {
         for (let i = 0; i < course.durationDays; i++) {
-          const courseDay = addDays(course.date, i);
+          const courseDay = addDays(new Date(course.date), i);
           if (isSameDay(courseDay, date)) {
             return true;
           }
         }
         return false;
       }
-      return isSameDay(course.date, date);
+      return isSameDay(new Date(course.date), date);
     });
   };
 
@@ -62,10 +63,10 @@ const CourseCalendar = () => {
   const generateCourseInfoText = (course: Course) => {
     let courseInfo = `I am interested in the "${course.title}" `;
     
-    courseInfo += `scheduled for ${format(course.date, "MMMM d, yyyy")}`;
+    courseInfo += `scheduled for ${format(new Date(course.date), "MMMM d, yyyy")}`;
     
     if (course.durationDays && course.durationDays > 1) {
-      const endDate = addDays(course.date, course.durationDays - 1);
+      const endDate = addDays(new Date(course.date), course.durationDays - 1);
       courseInfo += ` through ${format(endDate, "MMMM d, yyyy")}`;
     }
     

@@ -15,7 +15,7 @@ const CourseDetails = ({ selectedDate, selectedCourse, generateCourseInfoText }:
     <>
       {selectedCourse ? (
         <div className="p-4 bg-brand-50 rounded-lg border animate-fade-in">
-          <h4 className="font-medium text-brand-700">{format(selectedCourse.date, "MMMM d, yyyy")}</h4>
+          <h4 className="font-medium text-brand-700">{format(new Date(selectedCourse.date), "MMMM d, yyyy")}</h4>
           <p className="text-lg font-semibold text-brand-800 mt-1">{selectedCourse.title}</p>
           <p className="text-brand-600 mt-1">{selectedCourse.location}</p>
           {selectedCourse.trainer && (

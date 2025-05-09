@@ -32,20 +32,20 @@ const CalendarGrid = ({
   };
 
   const isFirstDayOfCourse = (date: Date, course: Course) => {
-    return isSameDay(date, course.date) && course.durationDays && course.durationDays > 1;
+    return isSameDay(date, new Date(course.date)) && course.durationDays && course.durationDays > 1;
   };
 
   const isLastDayOfCourse = (date: Date, course: Course) => {
     if (!course.durationDays || course.durationDays <= 1) return false;
-    const lastDay = addDays(course.date, course.durationDays - 1);
+    const lastDay = addDays(new Date(course.date), course.durationDays - 1);
     return isSameDay(date, lastDay);
   };
 
   const isMiddleDayOfCourse = (date: Date, course: Course) => {
     if (!course.durationDays || course.durationDays <= 2) return false;
     
-    const startDate = course.date;
-    const endDate = addDays(course.date, course.durationDays - 1);
+    const startDate = new Date(course.date);
+    const endDate = addDays(new Date(course.date), course.durationDays - 1);
     
     return isWithinInterval(date, { start: addDays(startDate, 1), end: addDays(endDate, -1) });
   };
