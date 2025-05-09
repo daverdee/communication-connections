@@ -12,6 +12,10 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    fs: {
+      // Allow serving files from one level up to the project root
+      allow: ['..'],
+    },
   },
   plugins: [
     react(),
@@ -27,6 +31,6 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'build', // Using 'build' for cPanel and Netlify compatibility
     emptyOutDir: true,
-    sourcemap: false
+    sourcemap: process.env.NODE_ENV !== 'production'
   }
 }));
