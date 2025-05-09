@@ -17,11 +17,12 @@ export default defineConfig(({ mode }) => ({
       allow: ['..'],
     },
     hmr: {
-      // Improved connection handling
-      timeout: 10000,
+      // More robust connection settings
+      timeout: 20000,
       overlay: true,
-      clientPort: 443,
-      host: "localhost"
+      // Using default ports to avoid connection issues
+      path: "ws",
+      // Disable host and clientPort specifications
     },
   },
   plugins: [

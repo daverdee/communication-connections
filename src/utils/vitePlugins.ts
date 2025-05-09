@@ -19,18 +19,17 @@ export function spaFallbackPlugin() {
               return next();
             }
             
-            // Skip for assets, API requests, or static files
-            if (
-              req.url.includes('.') || 
-              req.url.startsWith('/api/') || 
-              req.url.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico)$/)
-            ) {
+            // Only handle GET requests for page routes
+            if (req.method !== 'GET' || 
+                req.url.includes('.') || 
+                req.url.startsWith('/api/') || 
+                req.url.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico)$/)) {
               return next();
             }
-            
+
             // Rewrite all other requests to index.html
             req.url = '/index.html';
-            next();
+            return next();
           } catch (error) {
             console.error('Error in SPA fallback plugin:', error);
             next();
