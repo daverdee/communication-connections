@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
   base: "/",
   server: {
     host: "::",
-    port: 8080, // Using lowercase "port" as required by Vite
+    Port: 8080, // Changed "port" to "Port" as requested
     fs: {
       // Allow serving files from one level up to the project root
       allow: ['..'],
