@@ -1,6 +1,6 @@
 
 import React from "react";
-import { CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactFormDialog from "./ContactFormDialog";
 
@@ -45,7 +45,7 @@ const TrainingProgram: React.FC<TrainingProgramProps> = ({
           <ul className="space-y-2">
             {learningPoints.map((point, index) => (
               <li key={index} className="flex items-start">
-                <CheckCircle className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
+                <Check className="h-5 w-5 text-brand-600 mr-2 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600">{point}</span>
               </li>
             ))}

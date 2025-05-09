@@ -1,6 +1,6 @@
 
 import React from "react";
-import { CheckCircle, XCircle } from "lucide-react";
+import { Check, X } from "lucide-react";
 
 const TrainingIntroSection: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const TrainingIntroSection: React.FC = () => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <div className="flex items-start mb-4">
-                  <CheckCircle className="h-6 w-6 text-green-600 mr-3 flex-shrink-0" />
+                  <Check className="h-6 w-6 text-green-600 mr-3 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-800">
                       All programs are designed for trained healthcare professionals only
@@ -29,7 +29,7 @@ const TrainingIntroSection: React.FC = () => {
               </div>
               <div>
                 <div className="flex items-start">
-                  <XCircle className="h-6 w-6 text-red-600 mr-3 flex-shrink-0" />
+                  <X className="h-6 w-6 text-red-600 mr-3 flex-shrink-0" />
                   <div>
                     <p className="font-medium text-gray-800">
                       Non-clinical staff are NOT eligible for certification

@@ -1,6 +1,6 @@
 
 import React from "react";
-import { CheckCircle } from "lucide-react";
+import { Check } from "lucide-react";
 
 const WhyChooseSection: React.FC = () => {
   const whyChooseReasons = [
@@ -24,7 +24,7 @@ const WhyChooseSection: React.FC = () => {
                 key={index}
                 className="flex items-start p-5 bg-white rounded-lg border border-gray-100"
               >
-                <CheckCircle className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
+                <Check className="h-6 w-6 text-brand-600 mr-3 flex-shrink-0 mt-0.5" />
                 <p className="text-gray-700">{reason}</p>
               </div>
             ))}

@@ -1,5 +1,6 @@
+
 import React from "react";
-import { ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
+import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ContactFormDialog from "../ContactFormDialog";
 
@@ -18,7 +19,7 @@ const ContactSection: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8 md:gap-12 mb-10 max-w-3xl mx-auto">
             <div className="flex flex-col items-center">
               <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-3">
-                <PhoneCall className="h-6 w-6" />
+                <Phone className="h-6 w-6" />
               </div>
               <p className="font-medium">Call Us</p>
               <p className="text-white/90">647-839-6515</p>
