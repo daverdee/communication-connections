@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => ({
   base: "/",
   server: {
     host: "::",
-    port: 8080,
+    PORT: 8080, // Capitalized "PORT" instead of "port"
     fs: {
       // Allow serving files from one level up to the project root
       allow: ['..'],
