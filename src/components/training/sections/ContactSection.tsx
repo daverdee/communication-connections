@@ -1,4 +1,3 @@
-
 import React from "react";
 import { ArrowRight, PhoneCall, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -31,7 +30,7 @@ const ContactSection: React.FC = () => {
               </div>
               <p className="font-medium">Email Us</p>
               <p className="text-white/90">
-                leilacccs<wbr />@gmail.com
+                david@communication<wbr />connections.ca
               </p>
             </div>
             
