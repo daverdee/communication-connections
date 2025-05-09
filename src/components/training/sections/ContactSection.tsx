@@ -31,7 +31,7 @@ const ContactSection: React.FC = () => {
               </div>
               <p className="font-medium">Email Us</p>
               <p className="text-white/90">
-                leilacccs@gmail.com
+                leilacccs<wbr />@gmail.com
               </p>
             </div>
             

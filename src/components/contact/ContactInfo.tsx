@@ -12,7 +12,7 @@ const ContactInfo: React.FC = () => {
           <Mail className="w-6 h-6 text-brand-600 mt-1" />
           <div>
             <h3 className="font-medium">Email</h3>
-            <p className="text-gray-600">leilacccs@gmail.com</p>
+            <p className="text-gray-600">david@communication<wbr />connections.ca</p>
           </div>
         </div>
         

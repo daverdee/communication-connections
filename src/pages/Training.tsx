@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TrainingIntroSection from "@/components/training/sections/TrainingIntroSection";
 import TrainingProgramsSection from "@/components/training/sections/TrainingProgramsSection";
-import AcademicPartnershipsSection from "@/components/training/sections/AcademicPartnershipsSection";
 import WhyChooseSection from "@/components/training/sections/WhyChooseSection";
 import ContactSection from "@/components/training/sections/ContactSection";
 
@@ -28,7 +27,6 @@ const Training: React.FC = () => {
 
         <TrainingIntroSection />
         <TrainingProgramsSection />
-        <AcademicPartnershipsSection />
         <WhyChooseSection />
         <ContactSection />
       </main>
