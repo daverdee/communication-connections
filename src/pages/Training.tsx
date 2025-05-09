@@ -6,6 +6,7 @@ import TrainingIntroSection from "@/components/training/sections/TrainingIntroSe
 import TrainingProgramsSection from "@/components/training/sections/TrainingProgramsSection";
 import WhyChooseSection from "@/components/training/sections/WhyChooseSection";
 import ContactSection from "@/components/training/sections/ContactSection";
+import AcademicPartnershipsSection from "@/components/training/sections/AcademicPartnershipsSection";
 
 const Training: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const Training: React.FC = () => {
         </section>
 
         <TrainingIntroSection />
+        <AcademicPartnershipsSection />
         <TrainingProgramsSection />
         <WhyChooseSection />
         <ContactSection />
