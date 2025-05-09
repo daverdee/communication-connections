@@ -31,6 +31,6 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: 'build', // Using 'build' for cPanel and Netlify compatibility
     emptyOutDir: true,
-    sourcemap: process.env.NODE_ENV !== 'production'
+    sourcemap: mode === 'development'
   }
 }));
