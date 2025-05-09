@@ -16,6 +16,11 @@ export default defineConfig(({ mode }) => ({
       // Allow serving files from one level up to the project root
       allow: ['..'],
     },
+    hmr: {
+      // Try to fix connection issues
+      timeout: 5000,
+      overlay: true
+    },
   },
   plugins: [
     react(),

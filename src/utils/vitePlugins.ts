@@ -13,15 +13,16 @@ export function spaFallbackPlugin() {
           res: any, 
           next: Connect.NextFunction
         ) => {
-          if (req.url?.includes('.')) {
-            // Skip for assets
+          // Skip if URL is undefined
+          if (!req.url) {
             return next();
           }
           
-          // Check if this is an API request or a static file
+          // Skip for assets, API requests, or static files
           if (
-            req.url?.startsWith('/api/') || 
-            req.url?.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico)$/)
+            req.url.includes('.') || 
+            req.url.startsWith('/api/') || 
+            req.url.match(/\.(css|js|png|jpg|jpeg|gif|svg|ico)$/)
           ) {
             return next();
           }
