@@ -21,11 +21,11 @@ export interface Course {
  * 3. Deploy the updated site
  */
 export const upcomingCourses: Course[] = [
-  // March 31 - April 2 three-day course
+  // May 12-14, 2025 three-day course
   {
     id: 1,
     title: "Principles for Successful Implementation (3 Day Course)",
-    date: new Date(2024, 2, 31), // March 31, 2024 (month is 0-indexed)
+    date: new Date(2025, 4, 12), // May 12, 2025 (month is 0-indexed)
     location: "Finch HQ",
     type: "fundamental",
     startTime: "8:30 am",
@@ -33,11 +33,11 @@ export const upcomingCourses: Course[] = [
     trainer: "Leila Chong",
     durationDays: 3
   },
-  // April 11 one-day course
+  // May 22 one-day course
   {
     id: 2,
     title: "Fundamental Restorative Therapy Training (1 Day Course)",
-    date: new Date(2024, 3, 11), // April 11, 2024
+    date: new Date(2025, 4, 22), // May 22, 2025
     location: "Finch HQ",
     type: "advanced",
     startTime: "8:30 am",
@@ -45,11 +45,11 @@ export const upcomingCourses: Course[] = [
     trainer: "Leila Chong",
     durationDays: 1
   },
-  // April 22-24 three-day course
+  // June 2-4 three-day course
   {
     id: 3,
     title: "Principles for Successful Implementation (3 Day Course)",
-    date: new Date(2024, 3, 22), // April 22, 2024
+    date: new Date(2025, 5, 2), // June 2, 2025
     location: "Finch HQ",
     type: "fundamental",
     startTime: "8:30 am",
@@ -57,11 +57,11 @@ export const upcomingCourses: Course[] = [
     trainer: "Leila Chong",
     durationDays: 3
   },
-  // April 25 one-day course
+  // June 16 one-day course
   {
     id: 4,
     title: "Fundamental Restorative Therapy Training (1 Day Course)",
-    date: new Date(2024, 3, 25), // April 25, 2024
+    date: new Date(2025, 5, 16), // June 16, 2025
     location: "Finch HQ",
     type: "advanced",
     startTime: "8:30 am",
