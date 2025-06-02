@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import {
   format,
@@ -12,11 +11,13 @@ import {
   addDays
 } from "date-fns";
 import { Course, upcomingCourses } from "@/data/courseData";
+import { Button } from "@/components/ui/button";
 import CalendarHeader from "./calendar/CalendarHeader";
 import CalendarGrid from "./calendar/CalendarGrid";
 import CalendarLegend from "./calendar/CalendarLegend";
 import CourseDetails from "./calendar/CourseDetails";
 import CustomDateRequest from "./calendar/CustomDateRequest";
+import ContactFormDialog from "@/components/training/ContactFormDialog";
 
 const CourseCalendar = () => {
   // Initialize with current month (May 2025)
@@ -87,6 +88,14 @@ const CourseCalendar = () => {
     return "I am interested in scheduling a custom training session on dates that are not currently listed on your calendar. Please contact me with information about availability and pricing options.";
   };
 
+  const generateOrganizationText = () => {
+    return "I am interested in bringing restorative therapy training to my organization/facility. We would like to schedule on-site training for our staff. Please provide information about pricing, availability, and how we can arrange training at our location.";
+  };
+
+  const generatePersonalText = () => {
+    return "I am interested in attending restorative therapy training for my personal career development. Please provide information about upcoming course dates, pricing, and registration details for individual enrollment.";
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 animate-fade-in">
       <CalendarHeader 
@@ -113,6 +122,28 @@ const CourseCalendar = () => {
         />
         
         <CustomDateRequest generateCustomDateText={generateCustomDateText} />
+        
+        <div className="mt-6 p-4 bg-gray-50 rounded-lg border">
+          <h4 className="font-medium text-gray-800 mb-3">Request More Information</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ContactFormDialog 
+              trigger={
+                <Button variant="outline" className="w-full">
+                  Training for My Organization
+                </Button>
+              }
+              initialComments={generateOrganizationText()}
+            />
+            <ContactFormDialog 
+              trigger={
+                <Button variant="outline" className="w-full">
+                  Personal Career Development
+                </Button>
+              }
+              initialComments={generatePersonalText()}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
