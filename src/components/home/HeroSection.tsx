@@ -2,13 +2,6 @@
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const scrollToCalendar = () => {
-    const calendarSection = document.getElementById("course-calendar");
-    if (calendarSection) {
-      calendarSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4 text-center">
@@ -25,23 +18,11 @@ const HeroSection = () => {
           </p>
           
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <button 
-              onClick={scrollToCalendar} 
-              className="btn-primary"
-            >
-              Course Calendar
-            </button>
+            <Link to="/training" className="btn-primary">
+              Our Programs
+            </Link>
             <Link to="/contact" className="btn-secondary">
               Contact Us
-            </Link>
-          </div>
-          
-          <div className="mt-5 animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <Link 
-              to="/training" 
-              className="inline-flex items-center gap-2 text-brand-600 hover:text-brand-800"
-            >
-              Learn more about our programs
             </Link>
           </div>
         </div>
