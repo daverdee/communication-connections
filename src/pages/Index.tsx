@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/home/HeroSection";
 import WhyChooseUsSection from "@/components/home/WhyChooseUsSection";
-import UpcomingCoursesSection from "@/components/home/UpcomingCoursesSection";
+import RequestInfoSection from "@/components/home/RequestInfoSection";
 import ComplianceSection from "@/components/home/ComplianceSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CtaSection from "@/components/home/CtaSection";
@@ -58,7 +58,7 @@ const Home = () => {
       <main>
         <HeroSection />
         <WhyChooseUsSection benefits={benefits} />
-        <UpcomingCoursesSection />
+        <RequestInfoSection />
         <ComplianceSection />
         <TestimonialsSection testimonials={testimonials} />
         <CtaSection />
